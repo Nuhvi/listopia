@@ -1,57 +1,90 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import logo from '../images/logo.svg';
 
-const Logo = styled.div`
-  position: relative;
+const WhiteCircle = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   background-color: white;
-  width: 140px;
-  height: 140px;
-  border-radius: 100%;
 
-  @keyframes example {
+  @keyframes white-grow {
     0% {
       opacity: 0;
     }
-    1%{
-      width: 100px;
-      height: 20px;
+    1% {
+      width: 70%;
+      height: 15%;
       border-radius: 10px;
-      opacity: 0.1
+      opacity: 0.1;
     }
-    33%{
-      width: 180px;
-      height: 100px;
+    33% {
+      width: 120%;
+      height: 60%;
       border-radius: 50px;
-      opacity: 0.5
+      opacity: 0.5;
     }
-    66%{
-      width: 140px;
-      height: 130px;
+    66% {
+      width: 100%;
+      height: 90%;
       border-radius: 50%;
-      opacity: 0.9
+      opacity: 0.9;
     }
     100% {
-      width: 140px;
-      height: 140px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      opacity: 1
+      opacity: 1;
     }
   }
-  animation: example .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+  animation: white-grow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 `;
 
 const Img = styled.img`
   position: absolute;
 
-  left: 25%;
-  top: 25%;
-  height: 50%;
   width: 50%;
+  height: 50%;
+  background-color: white;
+
+  @keyframes logo-grow {
+    0% {
+      opacity: 0;
+      width: 0;
+      height: 0%;
+    }
+    50% {
+      width: 60%;
+      height: 60%;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  animation: logo-grow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 `;
 
-export default () => (
-  <Logo>
+const Container = styled.div`
+  position: relative;
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const BounceLogo = ({ size }) => (
+  <Container size={size}>
+    <WhiteCircle />
     <Img src={logo} />
-  </Logo>
+  </Container>
 );
+
+BounceLogo.propTypes = {
+  size: PropTypes.string.isRequired,
+};
+
+export default BounceLogo;

@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import BounceLogo from './BounceLogo';
+import Theme from '../config/theme';
 
 const Background = styled.div`
   height: 100vh;
   max-height: 812px;
-  background-color: #c513af;
+  background-color: ${Theme.colors.highlight.main};
   color: white;
 
   display: flex;
@@ -21,7 +22,7 @@ const LoginForm = styled.form`
 
 export default () => (
   <Background>
-    <BounceLogo />
+    <BounceLogo size="140px" />
     <LoginForm>
       <label htmlFor="name">Username:</label>
       <input id="name" name="name" type="text" />
