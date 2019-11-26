@@ -25,7 +25,7 @@ const WhiteCircle = styled.div`
       width: 120%;
       height: 60%;
       border-radius: 50px;
-      opacity: 0.5;
+      opacity: 0.1;
     }
     66% {
       width: 100%;
@@ -33,7 +33,7 @@ const WhiteCircle = styled.div`
       border-radius: 50%;
       opacity: 0.9;
     }
-    100% {
+    90% {
       width: 100%;
       height: 100%;
       border-radius: 50%;
@@ -43,7 +43,7 @@ const WhiteCircle = styled.div`
   animation: white-grow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 `;
 
-const SVG = styled.img`
+const Icon = styled.img`
   position: absolute;
 
   width: 50%;
@@ -83,7 +83,7 @@ const Container = styled.div`
 const BounceLogo = ({ size }) => (
   <Container size={size}>
     <WhiteCircle />
-    <SVG />
+    <Icon />
   </Container>
 );
 
