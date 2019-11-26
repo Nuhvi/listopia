@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Login from './Login';
+import Home from '../pages';
 
 const Container = styled.div`
+  position: relative;
   height: 100vh;
 
   @media only screen and (min-width: 1025px) {
@@ -20,6 +20,6 @@ const Container = styled.div`
 
 export default () => (
   <Container>
-    <Login />
+    <Home />
   </Container>
 );
