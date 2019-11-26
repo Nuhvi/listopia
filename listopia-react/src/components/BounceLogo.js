@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import logo from '../images/logo.svg';
+import Theme from '../config/theme';
 
 const WhiteCircle = styled.div`
   position: absolute;
@@ -42,12 +43,15 @@ const WhiteCircle = styled.div`
   animation: white-grow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 `;
 
-const Img = styled.img`
+const SVG = styled.img`
   position: absolute;
 
   width: 50%;
   height: 50%;
-  background-color: white;
+
+  background-color: ${Theme.colors.highlight.main};
+  mask: url(${logo}) no-repeat center;
+  mask-size: contain;
 
   @keyframes logo-grow {
     0% {
@@ -79,7 +83,7 @@ const Container = styled.div`
 const BounceLogo = ({ size }) => (
   <Container size={size}>
     <WhiteCircle />
-    <Img src={logo} />
+    <SVG />
   </Container>
 );
 
