@@ -1,0 +1,28 @@
+html,
+#root {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #ececec;
+  margin: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  height: 2rem;
+  background: none;
+  outline: none;
+}
