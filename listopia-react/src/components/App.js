@@ -4,7 +4,7 @@ import Home from '../pages';
 
 const Container = styled.div`
   position: relative;
-  height: 100vh;
+  height: 100%;
 
   @media only screen and (min-width: 1025px) {
     margin: auto;

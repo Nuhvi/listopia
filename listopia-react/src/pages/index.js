@@ -8,6 +8,7 @@ export default () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setState({ LoggedIn: 'true' });
+    document.activeElement.blur();
   };
 
   const checkAuthentication = () => localStorage.getItem('userId');
