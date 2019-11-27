@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  BrowserRouter as Router, Switch, Route, Link,
+} from 'react-router-dom';
 import Home from '../pages';
+import Appartments from '../pages/appartments';
 
 document
   .querySelector('meta[name=theme-color]')
@@ -23,7 +27,19 @@ const Container = styled.div`
 `;
 
 export default () => (
-  <Container>
-    <Home />
-  </Container>
+  <Router>
+    <Container>
+      <Link to="/">Home</Link>
+      <Link to="/appartments">appartments</Link>
+
+      <Switch>
+        <Route path="/appartments">
+          <Appartments />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Container>
+  </Router>
 );
