@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import Home from '../pages';
+import SignIn from '../pages/SignIn';
 import Appartments from '../pages/appartments';
 
 document
@@ -37,7 +37,7 @@ export default () => (
           <Appartments />
         </Route>
         <Route path="/">
-          <Home />
+          <SignIn />
         </Route>
       </Switch>
     </Container>
