@@ -1,32 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Login from '../components/Login';
 import Categories from '../components/Categories';
+import { authenticate } from '../actions';
 
-export default () => {
-  const [state, setState] = useState({ LoggedIn: 'pending' });
+const mapStateToProps = (state) => ({
+  authenticated: state.authenticated,
+});
 
+const mapDispatchToProps = (dispatch) => ({
+  authenticate: (userId) => dispatch(authenticate(userId)),
+});
+
+const IndexPage = ({ authenticated, authenticate }) => {
   const submitHandler = (e) => {
     e.preventDefault();
-    setState({ LoggedIn: 'true' });
+    authenticate(e.target.name.value);
+    localStorage.setItem('userId', e.target.name.value);
     document.activeElement.blur();
   };
 
-  const checkAuthentication = () => localStorage.getItem('userId');
+  const checkSession = () => {
+    const userId = localStorage.getItem('userId');
+    authenticate(userId);
+  };
 
   useEffect(() => {
-    if (state.LoggedIn === 'pending') {
+    if (authenticated === 'pending') {
       new Promise((resolve) => {
         setTimeout(() => {
           resolve('resolved');
         }, 1500);
-      }).then(() => setState({ LoggedIn: `${!!checkAuthentication()}` }));
+      }).then(() => checkSession());
     }
   });
 
   return (
     <div>
-      <Login loggedIn={state.LoggedIn} submitHandler={submitHandler} />
-      <Categories />
+      <Login authenticated={authenticated} submitHandler={submitHandler} />
+      {authenticated === 'true' ? <Categories /> : ''}
     </div>
   );
 };
+
+IndexPage.propTypes = {
+  authenticated: PropTypes.string.isRequired,
+  authenticate: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);

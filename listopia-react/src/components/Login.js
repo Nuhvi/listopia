@@ -21,7 +21,7 @@ const Container = styled.div`
 
   transition: top 0.2s;
 
-  &[data-loggedin='true'] {
+  &[data-authenticated='true'] {
     top: -100%;
     border-radius: 0 0 20px 20px;
   }
@@ -36,7 +36,7 @@ const LoginForm = styled.form`
 
   transition: 0.3s;
 
-  &[data-loggedin='false'] {
+  &[data-authenticated='false'] {
     margin-top: 3rem;
     height: 150px;
   }
@@ -51,10 +51,10 @@ const LoginForm = styled.form`
   }
 `;
 
-const Login = ({ loggedIn, submitHandler }) => (
-  <Container data-loggedin={loggedIn}>
+const Login = ({ authenticated, submitHandler }) => (
+  <Container data-authenticated={authenticated}>
     <BounceLogo size="9rem" />
-    <LoginForm onSubmit={submitHandler} data-loggedin={loggedIn}>
+    <LoginForm onSubmit={submitHandler} data-authenticated={authenticated}>
       <label htmlFor="name">
         <p>Username</p>
         <input type="text" id="name" placeholder="Name" />
@@ -66,7 +66,7 @@ const Login = ({ loggedIn, submitHandler }) => (
 );
 
 Login.propTypes = {
-  loggedIn: PropTypes.string.isRequired,
+  authenticated: PropTypes.string.isRequired,
   submitHandler: PropTypes.func.isRequired,
 };
 

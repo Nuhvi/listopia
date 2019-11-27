@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 
 const initialState = {
-  loggedIn: 'pending',
+  authenticated: 'pending',
   realEstate: [
     {
       id: 1,
