@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Home from '../pages';
 
+document
+  .querySelector('meta[name=theme-color]')
+  .setAttribute('content', 'rgba(0,0,0,0)');
+
 const Container = styled.div`
   position: relative;
   height: 100%;
