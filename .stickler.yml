@@ -1,0 +1,8 @@
+linters:
+  eslint:
+    config: "./eslint.config"
+
+files:
+  ignore:
+    - "listopia-react/public/*"
+    - "listopia-react/node_modules/*"
