@@ -19,7 +19,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  transition: top 0.5s;
+  transition: top 0.2s;
 
   &[data-loggedin='true'] {
     top: -100%;
