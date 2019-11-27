@@ -1,8 +1,8 @@
-export const authenticate = (userId) => ({
-  type: 'AUTHENTICATE_USER',
-  userId,
+export const fetchingUserPending = () => ({
+  type: 'FETCHING_USER_PENDING',
 });
 
-export const other = () => ({
-  type: 'OTHER_ACTION',
+export const signIn = (userName) => ({
+  type: 'SIGN_IN',
+  userName,
 });

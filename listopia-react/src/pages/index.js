@@ -2,6 +2,6 @@ import React from 'react';
 
 export default () => (
   <div>
-    <h1>Appartments</h1>
+    <h1>Home</h1>
   </div>
 );

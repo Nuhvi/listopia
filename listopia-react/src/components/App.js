@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import SignIn from '../pages/SignIn';
 import Appartments from '../pages/appartments';
+import Home from '../pages';
 
 document
   .querySelector('meta[name=theme-color]')
@@ -27,8 +27,8 @@ const Container = styled.div`
 `;
 
 export default () => (
-  <Router>
-    <Container>
+  <Container>
+    <Router>
       <Link to="/">Home</Link>
       <Link to="/appartments">appartments</Link>
 
@@ -36,10 +36,10 @@ export default () => (
         <Route path="/appartments">
           <Appartments />
         </Route>
-        <Route path="/">
-          <SignIn />
+        <Route exact path="/">
+          <Home />
         </Route>
       </Switch>
-    </Container>
-  </Router>
+    </Router>
+  </Container>
 );
