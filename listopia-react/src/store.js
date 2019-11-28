@@ -10,7 +10,7 @@ const initialState = {
       price: 10,
       desc: 'gree',
       category: 'Apartment',
-      favorite: false,
+      favorite: true,
     },
     {
       id: 12,

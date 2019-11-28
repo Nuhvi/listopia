@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-
 const Item = ({ item }) => (
-  <Link to={`${item.id}`} replace>
+  <Link to={(location) => (
+    { ...location, pathname: `/items/${item.id}` }
+  )}
+  >
     <article>
       <p>
         <span>ID: </span>

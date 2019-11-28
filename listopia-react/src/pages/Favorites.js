@@ -1,27 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import Item from '../components/Item';
-import getItemsByCategory from '../selectors';
-import { setCategory } from '../actions';
 
-const Index = ({ items, setCategory }) => {
-  const { category } = useParams();
-  setCategory(category);
-
+function Favorites({ items }) {
   return (
     <div>
-      <h1>{category}</h1>
+      <h1>Favorites</h1>
       {items.map((item) => (
         <Item key={item.id} item={item} />
       ))}
     </div>
   );
-};
+}
 
-Index.propTypes = {
-  setCategory: PropTypes.func.isRequired,
+Favorites.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -33,11 +26,7 @@ Index.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  items: getItemsByCategory(state),
+  items: state.items.filter((item) => item.favorite),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCategory: (category) => dispatch(setCategory(category)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(mapStateToProps)(Favorites);
