@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RealEstate = ({ realEstate }) => (
+const Item = ({ item }) => (
   <article>
     <p>
       <span>ID: </span>
-      {realEstate.id}
+      {item.id}
     </p>
     <p>
       <span>Price: </span>
-      {realEstate.price}
+      {item.price}
     </p>
     <p>
       <span>Desc: </span>
-      {realEstate.desc}
+      {item.desc}
     </p>
     <p>
       <span>Catg: </span>
-      {realEstate.category}
+      {item.category}
     </p>
   </article>
 );
 
-RealEstate.propTypes = {
-  realEstate: PropTypes.shape({
+Item.propTypes = {
+  item: PropTypes.shape({
     id: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     desc: PropTypes.string.isRequired,
@@ -31,4 +31,4 @@ RealEstate.propTypes = {
   }).isRequired,
 };
 
-export default RealEstate;
+export default Item;

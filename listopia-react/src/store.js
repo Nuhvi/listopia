@@ -4,7 +4,7 @@ import reducer from './reducers';
 const initialState = {
   user: { data: null, pending: true },
   category: null,
-  realEstates: [
+  items: [
     {
       id: 1,
       price: 10,

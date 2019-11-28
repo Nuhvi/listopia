@@ -1,7 +1,6 @@
 import React from 'react';
 import Category from '../components/Category';
-
-const categories = ['Apartment', 'House', 'Room', 'Land', 'Other'];
+import categories from '../config/categories';
 
 export default () => (
   <div>

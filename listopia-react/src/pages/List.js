@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import RealEstate from '../components/RealEstate';
+import Item from '../components/Item';
 import getItemsByCategory from '../selectors';
 import { setCategory } from '../actions';
 
-const Index = ({ realEstates, setCategory }) => {
+const Index = ({ items, setCategory }) => {
   const { category } = useParams();
   setCategory(category);
 
   return (
     <div>
       <h1>{category}</h1>
-      {realEstates.map((realEstate) => (
-        <RealEstate key={realEstate.id} realEstate={realEstate} />
+      {items.map((item) => (
+        <Item key={item.id} item={item} />
       ))}
     </div>
   );
@@ -22,7 +22,7 @@ const Index = ({ realEstates, setCategory }) => {
 
 Index.propTypes = {
   setCategory: PropTypes.func.isRequired,
-  realEstates: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
@@ -33,7 +33,7 @@ Index.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  realEstates: getItemsByCategory(state),
+  items: getItemsByCategory(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
