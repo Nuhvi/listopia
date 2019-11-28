@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import RealEstate from '../components/RealEstate';
 
+const Index = ({ realEstates }) => {
+  const { category } = useParams();
 
-const Index = ({ realEstates }) => (
-  <div>
-    {realEstates.map((realEstate) => (
-      <RealEstate
-        key={realEstate.id}
-        realEstate={realEstate}
-      />
-    ))}
-  </div>
-);
+  return (
+    <div>
+      <h1>{category}</h1>
+      {realEstates.map((realEstate) => (
+        <RealEstate key={realEstate.id} realEstate={realEstate} />
+      ))}
+    </div>
+  );
+};
 
 Index.propTypes = {
   realEstates: PropTypes.arrayOf(

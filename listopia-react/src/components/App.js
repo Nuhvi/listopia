@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import Home from '../pages';
+import Categories from '../pages/Categories';
 import List from '../pages/List';
 
 document
@@ -23,14 +23,13 @@ const Container = styled.div`
 export default () => (
   <Container>
     <Router>
-      <Link to="/">Home</Link>
-      <Link to="/List">List</Link>
+      <Link to="/">Categories</Link>
 
       <Switch>
         <Route path="/" exact>
-          <Home />
+          <Categories />
         </Route>
-        <Route path="/List">
+        <Route path="/List/:category">
           <List />
         </Route>
       </Switch>
