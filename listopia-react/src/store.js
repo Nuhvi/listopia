@@ -3,6 +3,7 @@ import reducer from './reducers';
 
 const initialState = {
   user: { data: null, pending: false },
+  category: null,
   realEstate: [
     {
       id: 1,

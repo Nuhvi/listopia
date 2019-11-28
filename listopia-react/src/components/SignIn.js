@@ -71,12 +71,25 @@ const SignIn = ({ user, fetchingUserPending, signIn }) => {
     document.activeElement.blur();
   };
 
+  function resolveAfter2Seconds() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 2000);
+    });
+  }
+
+  const checkSession = async () => {
+    await resolveAfter2Seconds();
+    const userName = localStorage.getItem('userName');
+    if (userName) signIn(userName);
+  };
+
   useEffect(() => {
     if (!user.data) {
       if (!user.pending) fetchingUserPending();
 
-      const userName = localStorage.getItem('userName');
-      if (userName) signIn(userName);
+      checkSession();
     }
   });
 
