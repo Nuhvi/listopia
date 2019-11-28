@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import BounceLogo from './BounceLogo';
 import Theme from '../config/theme';
 
-import { fetchingUserPending, signIn } from '../actions';
+import { fetchingUserPending, fetchingUserSuccess, signIn } from '../actions';
 
 const Container = styled.div`
   position: absolute;
@@ -71,21 +71,26 @@ const SignIn = ({ user, fetchingUserPending, signIn }) => {
     document.activeElement.blur();
   };
 
-  function resolveAfter2Seconds() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve('resolved');
-      }, 2000);
-    });
-  }
+  const waitingSeconds = (seconds) => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, seconds * 1000);
+  });
 
   const checkSession = async () => {
-    await resolveAfter2Seconds();
+    await waitingSeconds(1);
+
     const userName = localStorage.getItem('userName');
-    if (userName) signIn(userName);
+
+    if (userName) {
+      await fetchingUserSuccess();
+      await waitingSeconds(2);
+      signIn(userName);
+    }
   };
 
   useEffect(() => {
+    console.log(user);
     if (!user.data) {
       if (!user.pending) fetchingUserPending();
 

@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 
 const initialState = {
-  user: { data: null, pending: false },
+  user: { data: null, pending: true },
   category: null,
   realEstate: [
     {

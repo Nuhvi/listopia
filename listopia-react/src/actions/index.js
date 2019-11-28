@@ -1,6 +1,9 @@
 export const fetchingUserPending = () => ({
   type: 'FETCHING_USER_PENDING',
 });
+export const fetchingUserSuccess = () => ({
+  type: 'FETCHING_USER_SUCCESS',
+});
 
 export const signIn = (userName) => ({
   type: 'SIGN_IN',
