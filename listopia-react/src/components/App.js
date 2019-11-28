@@ -6,6 +6,7 @@ import {
 import Categories from '../pages/Categories';
 import List from '../pages/List';
 import Item from '../pages/Item';
+import NotFound from '../pages/404';
 
 
 document
@@ -26,6 +27,7 @@ export default () => (
   <Container>
     <Router>
       <Link to="/">Categories</Link>
+      <Link to="/favorites">Favorites</Link>
 
       <Switch>
         <Route path="/" exact>
@@ -36,6 +38,9 @@ export default () => (
         </Route>
         <Route path="/list/item/:id">
           <Item />
+        </Route>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
     </Router>
