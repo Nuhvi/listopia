@@ -10,18 +10,21 @@ const initialState = {
       price: 10,
       desc: 'gree',
       category: 'Apartment',
+      favorite: false,
     },
     {
       id: 12,
       price: 20,
       desc: 'greeba',
       category: 'Apartment',
+      favorite: false,
     },
     {
       id: 3,
       price: 100,
       desc: 'groo',
       category: 'Room',
+      favorite: false,
     },
   ],
 };

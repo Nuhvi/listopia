@@ -19,3 +19,9 @@ export const setCategory = (category) => ({
   type: 'SET_CATEGORY',
   category,
 });
+
+
+export const toggleFavorite = (id) => ({
+  type: 'TOGGLE_FAVORITE',
+  id,
+});

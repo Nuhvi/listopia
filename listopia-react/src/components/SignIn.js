@@ -54,15 +54,6 @@ const LoginForm = styled.form`
   }
 `;
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  signIn: (userName) => dispatch(signIn(userName)),
-  fetchingUserPending: () => dispatch(fetchingUserPending()),
-});
-
 const SignIn = ({ user, fetchingUserPending, signIn }) => {
   const submitHandler = (e) => {
     e.preventDefault();
@@ -126,5 +117,14 @@ SignIn.propTypes = {
     pending: PropTypes.bool.isRequired,
   }).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signIn: (userName) => dispatch(signIn(userName)),
+  fetchingUserPending: () => dispatch(fetchingUserPending()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

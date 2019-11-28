@@ -32,6 +32,7 @@ Item.propTypes = {
     price: PropTypes.number.isRequired,
     desc: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
+    favorite: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
