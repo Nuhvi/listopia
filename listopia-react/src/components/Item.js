@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const Item = ({ item }) => (
-  <Link to={`item/${item.id}`}>
+  <Link to={`${item.id}`} replace>
     <article>
       <p>
         <span>ID: </span>

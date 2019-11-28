@@ -8,7 +8,6 @@ import List from '../pages/List';
 import Item from '../pages/Item';
 import NotFound from '../pages/404';
 
-
 document
   .querySelector('meta[name=theme-color]')
   .setAttribute('content', 'rgba(0,0,0,0)');
@@ -33,11 +32,11 @@ export default () => (
         <Route path="/" exact>
           <Categories />
         </Route>
-        <Route path="/list/:category" exact>
-          <List />
-        </Route>
-        <Route path="/list/item/:id">
+        <Route path="/items/:id/">
           <Item />
+        </Route>
+        <Route path="items/category/:category">
+          <List />
         </Route>
         <Route path="*">
           <NotFound />

@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toggleFavorite } from '../actions';
 
+const ItemNotFound = () => (
+  <p>Item Not Found</p>
+);
+
 const Item = ({ items, toggleFavorite }) => {
   const { id } = useParams();
   const item = items.find((item) => item.id === Number(id));
 
-  return (
+  return item ? (
     <article>
       <p>
         <span>ID: </span>
@@ -34,6 +38,8 @@ const Item = ({ items, toggleFavorite }) => {
         Favorite
       </button>
     </article>
+  ) : (
+    <ItemNotFound />
   );
 };
 

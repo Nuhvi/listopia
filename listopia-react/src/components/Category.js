@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Category = ({ category }) => (
-  <Link to={`list/${category}`}>
+  <Link to={`items/category/${category}`}>
     <div>
       {category}
     </div>
