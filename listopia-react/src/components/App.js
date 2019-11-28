@@ -5,6 +5,8 @@ import {
 } from 'react-router-dom';
 import Categories from '../pages/Categories';
 import List from '../pages/List';
+import Item from '../pages/Item';
+
 
 document
   .querySelector('meta[name=theme-color]')
@@ -29,8 +31,11 @@ export default () => (
         <Route path="/" exact>
           <Categories />
         </Route>
-        <Route path="/List/:category">
+        <Route path="/list/:category" exact>
           <List />
+        </Route>
+        <Route path="/list/item/:id">
+          <Item />
         </Route>
       </Switch>
     </Router>

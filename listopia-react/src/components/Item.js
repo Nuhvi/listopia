@@ -1,25 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 
 const Item = ({ item }) => (
-  <article>
-    <p>
-      <span>ID: </span>
-      {item.id}
-    </p>
-    <p>
-      <span>Price: </span>
-      {item.price}
-    </p>
-    <p>
-      <span>Desc: </span>
-      {item.desc}
-    </p>
-    <p>
-      <span>Catg: </span>
-      {item.category}
-    </p>
-  </article>
+  <Link to={`item/${item.id}`}>
+    <article>
+      <p>
+        <span>ID: </span>
+        {item.id}
+      </p>
+      <p>
+        <span>Price: </span>
+        {item.price}
+      </p>
+      <p>
+        <span>Desc: </span>
+        {item.desc}
+      </p>
+      <p>
+        <span>Catg: </span>
+        {item.category}
+      </p>
+    </article>
+  </Link>
 );
 
 Item.propTypes = {

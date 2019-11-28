@@ -12,7 +12,13 @@ const initialState = {
       category: 'Apartment',
     },
     {
-      id: 2,
+      id: 12,
+      price: 20,
+      desc: 'greeba',
+      category: 'Apartment',
+    },
+    {
+      id: 3,
       price: 100,
       desc: 'groo',
       category: 'Room',
