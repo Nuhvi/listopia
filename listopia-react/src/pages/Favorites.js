@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Item from '../components/Item';
+import ItemCard from '../components/ItemCard';
 
 function Favorites({ items }) {
   return (
     <div>
       <h1>Favorites</h1>
       {items.map((item) => (
-        <Item key={item.id} item={item} />
+        <ItemCard key={item.id} item={item} />
       ))}
     </div>
   );
