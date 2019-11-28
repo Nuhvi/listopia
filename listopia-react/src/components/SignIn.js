@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BounceLogo from './BounceLogo';
 import Theme from '../config/theme';
-
 import { fetchingUserPending, fetchingUserSuccess, signIn } from '../actions';
 
 const Container = styled.div`
@@ -84,13 +83,12 @@ const SignIn = ({ user, fetchingUserPending, signIn }) => {
 
     if (userName) {
       await fetchingUserSuccess();
-      await waitingSeconds(2);
+      await waitingSeconds(0.5);
       signIn(userName);
     }
   };
 
   useEffect(() => {
-    console.log(user);
     if (!user.data) {
       if (!user.pending) fetchingUserPending();
 

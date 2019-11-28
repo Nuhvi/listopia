@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Auth = ({ userData, signOut }) => (
-  <div>
+  <div style={{ height: '100%' }}>
     {userData ? <App /> : <SignIn />}
     <button onClick={signOut} type="button">
         SignOut

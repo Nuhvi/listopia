@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import realEstate from './real-estate';
+import realEstates from './real-estates';
 import user from './user';
 
-export default combineReducers({ user, realEstate });
+export default combineReducers({ user, realEstates });

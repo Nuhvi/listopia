@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import Appartments from '../pages/appartments';
 import Home from '../pages';
+import List from '../pages/List';
 
 document
   .querySelector('meta[name=theme-color]')
@@ -13,31 +13,25 @@ document
 const Container = styled.div`
   position: relative;
   height: 100%;
-
-  @media only screen and (min-width: 1025px) {
-    margin: auto;
-    margin-top: 20px;
-    max-width: 375px;
-    max-height: 812px;
-    border-radius: 40px;
-    overflow: hidden;
-    border: 8px solid white;
-    box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2);
-  }
+  max-width: 1024px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default () => (
   <Container>
     <Router>
       <Link to="/">Home</Link>
-      <Link to="/appartments">appartments</Link>
+      <Link to="/List">List</Link>
 
       <Switch>
-        <Route path="/appartments">
-          <Appartments />
-        </Route>
-        <Route exact path="/">
+        <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/List">
+          <List />
         </Route>
       </Switch>
     </Router>
