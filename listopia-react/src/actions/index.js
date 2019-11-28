@@ -13,3 +13,9 @@ export const signIn = (userName) => ({
 export const signOut = () => ({
   type: 'SIGN_OUT',
 });
+
+
+export const setCategory = (category) => ({
+  type: 'SET_CATEGORY',
+  category,
+});

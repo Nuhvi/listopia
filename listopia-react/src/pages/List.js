@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import RealEstate from '../components/RealEstate';
+import getItemsByCategory from '../selectors';
+import { setCategory } from '../actions';
 
-const Index = ({ realEstates }) => {
+const Index = ({ realEstates, setCategory }) => {
   const { category } = useParams();
+  setCategory(category);
 
   return (
     <div>
@@ -18,6 +21,7 @@ const Index = ({ realEstates }) => {
 };
 
 Index.propTypes = {
+  setCategory: PropTypes.func.isRequired,
   realEstates: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -29,7 +33,11 @@ Index.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  realEstates: state.realEstates,
+  realEstates: getItemsByCategory(state),
 });
 
-export default connect(mapStateToProps)(Index);
+const mapDispatchToProps = (dispatch) => ({
+  setCategory: (category) => dispatch(setCategory(category)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

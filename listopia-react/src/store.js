@@ -3,18 +3,19 @@ import reducer from './reducers';
 
 const initialState = {
   user: { data: null, pending: true },
+  category: null,
   realEstates: [
     {
       id: 1,
       price: 10,
       desc: 'gree',
-      category: 'appartment',
+      category: 'Apartment',
     },
     {
       id: 2,
       price: 100,
       desc: 'groo',
-      category: 'villa',
+      category: 'Room',
     },
   ],
 };
