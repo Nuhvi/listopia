@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => (
   <div>
-    <h1>Appartments</h1>
-    <a href="/">home</a>
+    <h1>404</h1>
+    <h2>Not Found</h2>
   </div>
 );

@@ -2,19 +2,29 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 
 const initialState = {
-  authenticated: 'pending',
-  realEstate: [
+  user: { data: null, pending: true },
+  category: null,
+  items: [
     {
       id: 1,
       price: 10,
       desc: 'gree',
-      category: 'appartment',
+      category: 'Apartment',
+      favorite: true,
     },
     {
-      id: 2,
+      id: 12,
+      price: 20,
+      desc: 'greeba',
+      category: 'Apartment',
+      favorite: false,
+    },
+    {
+      id: 3,
       price: 100,
       desc: 'groo',
-      category: 'villa',
+      category: 'Room',
+      favorite: false,
     },
   ],
 };

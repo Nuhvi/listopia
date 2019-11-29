@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import Home from '../pages';
-import Appartments from '../pages/appartments';
+import ItemView from '../pages/ItemView';
+import NotFound from '../pages/404';
+import Favorites from '../pages/Favorites';
+import Categories from '../pages/Categories';
+import CategorizedList from '../pages/CategorizedList';
 
 document
   .querySelector('meta[name=theme-color]')
@@ -13,33 +16,36 @@ document
 const Container = styled.div`
   position: relative;
   height: 100%;
-
-  @media only screen and (min-width: 1025px) {
-    margin: auto;
-    margin-top: 20px;
-    max-width: 375px;
-    max-height: 812px;
-    border-radius: 40px;
-    overflow: hidden;
-    border: 8px solid white;
-    box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2);
-  }
+  max-width: 1024px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default () => (
-  <Router>
-    <Container>
-      <Link to="/">Home</Link>
-      <Link to="/appartments">appartments</Link>
+  <Container>
+    <Router>
+      <Link to="/">Categories</Link>
+      <Link to="/favorites">Favorites</Link>
 
       <Switch>
-        <Route path="/appartments">
-          <Appartments />
+        <Route path="/" exact>
+          <Categories />
         </Route>
-        <Route path="/">
-          <Home />
+        <Route path="/items/:id/" exact>
+          <ItemView />
+        </Route>
+        <Route path="/items/category/:category">
+          <CategorizedList />
+        </Route>
+        <Route path="/favorites">
+          <Favorites />
+        </Route>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
-    </Container>
-  </Router>
+    </Router>
+  </Container>
 );

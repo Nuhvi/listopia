@@ -67,7 +67,7 @@ const Icon = styled.img`
       opacity: 1;
     }
   }
-  animation: logo-grow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+  animation: logo-grow ${(props) => props.animationDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 `;
 
 const Container = styled.div`
@@ -83,7 +83,7 @@ const Container = styled.div`
 const BounceLogo = ({ size }) => (
   <Container size={size}>
     <WhiteCircle />
-    <Icon />
+    <Icon animationDuration />
   </Container>
 );
 
