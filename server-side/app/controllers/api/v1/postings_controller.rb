@@ -7,7 +7,7 @@ class Api::V1::PostingsController < ApplicationController
   def index
     @postings = Posting.all
 
-    render json: @postings
+    render json: @postings, each_serializer: PostingSerializer
   end
 
   # GET /postings/1

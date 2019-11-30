@@ -5,5 +5,6 @@ FactoryBot.define do
     title { 'MyString' }
     price { 1 }
     desc { 'MyText' }
+    category { 'MyText' }
   end
 end
