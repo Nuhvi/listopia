@@ -19,3 +19,6 @@ FactoryBot.create(:user, email:      "admin@listopia.com",
 
 # Postings
 50.times.each { |i| FactoryBot.create(:posting, user: User.all.sample) }
+
+# Favorites
+10.times.each { |i| FactoryBot.create(:favorite, user: User.all.sample,  posting: Posting.all.sample) }
