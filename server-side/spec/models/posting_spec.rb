@@ -18,13 +18,15 @@ RSpec.describe Posting, type: :model do
     it {
       expect(FactoryBot.create(:posting))
         .to validate_inclusion_of(:category)
-        .in_array(%w[Apartment House Room Land Other]).
-        with_message('shoulda-matchers test string is not a valid category')
+        .in_array(%w[Apartment House Room Land Other])
+        .with_message('shoulda-matchers test string is not a valid category')
     }
   end
 
   describe 'associations' do
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:favorites).dependent(:destroy) }
+    it { is_expected.to have_many(:favoriters) }
   end
 
   describe 'default scope' do

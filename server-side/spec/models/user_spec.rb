@@ -18,6 +18,8 @@ RSpec.describe User, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:postings).dependent(:destroy) }
+    it { is_expected.to have_many(:favorites).dependent(:destroy) }
+    it { is_expected.to have_many(:favoritePostings) }
   end
 
   describe 'methods' do

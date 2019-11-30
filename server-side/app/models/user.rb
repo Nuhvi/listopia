@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :postings, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favoritePostings, through: :favorites, source: :posting
 end
