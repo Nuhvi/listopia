@@ -15,6 +15,12 @@ RSpec.describe Posting, type: :model do
     it { is_expected.to validate_presence_of(:desc) }
     it { is_expected.to validate_length_of(:desc).is_at_most(280) }
     it { is_expected.to validate_presence_of(:category) }
+    it {
+      expect(FactoryBot.create(:posting))
+        .to validate_inclusion_of(:category)
+        .in_array(%w[Apartment House Room Land Other]).
+        with_message('shoulda-matchers test string is not a valid category')
+    }
   end
 
   describe 'associations' do
