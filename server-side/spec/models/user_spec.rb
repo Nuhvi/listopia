@@ -19,9 +19,18 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:postings).dependent(:destroy) }
     it { is_expected.to have_many(:favorites).dependent(:destroy) }
-    it { is_expected.to have_many(:favoritePostings) }
+    it { is_expected.to have_many(:favorite_postings) }
   end
 
   describe 'methods' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:posting) { FactoryBot.create(:posting) }
+    describe 'mark_favorite' do
+      it 'adds posting to favorites' do
+        expect do
+          user.mark_favorite(posting)
+        end.to change { user.favorite_postings.count }.by(1)
+      end
+    end
   end
 end

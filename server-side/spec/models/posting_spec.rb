@@ -40,5 +40,17 @@ RSpec.describe Posting, type: :model do
   end
 
   describe 'methods' do
+    # let(:user) { FactoryBot.create(:user) }
+    # let(:posting) { FactoryBot.create(:friend) }
+
+    # describe 'favorited' do.
+    #   before do
+    #     2.times { FactoryBot.create(:notification, user: user) }
+    #   end
+
+    #   it 'checks if the Posting is favorited' do
+    #     expect(Posting.all).to eq [posting_three, posting_two, posting_one]
+    #   end
+    # end
   end
 end

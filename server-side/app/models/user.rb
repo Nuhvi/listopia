@@ -11,5 +11,9 @@ class User < ApplicationRecord
 
   has_many :postings, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favoritePostings, through: :favorites, source: :posting
+  has_many :favorite_postings, through: :favorites, source: :posting
+
+  def mark_favorite(posting)
+    favorites.create(posting: posting)
+  end
 end
