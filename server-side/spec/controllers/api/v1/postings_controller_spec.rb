@@ -26,18 +26,17 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe Api::V1::PostingsController, type: :controller do
-
   let(:user) { FactoryBot.create(:user) }
 
   # This should return the minimal set of attributes required to create a valid
   # Posting. As you add validations to Posting, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    FactoryBot.build(:posting, user: user).attributes
+    FactoryBot.build(:posting, user: user).attributes.symbolize_keys
   end
 
   let(:invalid_attributes) do
-    {}
+    { title: '' }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -73,7 +72,7 @@ RSpec.describe Api::V1::PostingsController, type: :controller do
         post :create, params: { posting: valid_attributes }, session: valid_session
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json')
-        expect(response.location).to eq(posting_url(Posting.last))
+        expect(response.location).to eq(api_v1_posting_url(Posting.last.id))
       end
     end
 
@@ -89,14 +88,17 @@ RSpec.describe Api::V1::PostingsController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        FactoryBot.build(:posting).attributes
+        FactoryBot.build(:posting).attributes.symbolize_keys
       end
 
       it 'updates the requested posting' do
         posting = Posting.create! valid_attributes
         put :update, params: { id: posting.to_param, posting: new_attributes }, session: valid_session
         posting.reload
-        skip('Add assertions for updated state')
+        expect(response).to have_http_status(:ok)
+        expect(response.content_type).to eq('application/json')
+        expect(posting.attributes.symbolize_keys[:title]).not_to eq(valid_attributes[:title])
+        expect(posting.attributes.symbolize_keys[:title]).to eq(new_attributes[:title])
       end
 
       it 'renders a JSON response with the posting' do

@@ -21,8 +21,6 @@ class Api::V1::PostingsController < ApplicationController
     @posting = Posting.new(posting_params)
     @posting.user = @user
 
-    puts posting_params
-
     if @posting.save
       render json: @posting, status: :created, location: api_v1_posting_url(@posting.id)
     else
@@ -32,6 +30,7 @@ class Api::V1::PostingsController < ApplicationController
 
   # PATCH/PUT /postings/1
   def update
+    puts posting_params
     if @posting.update(posting_params)
       render json: @posting
     else
