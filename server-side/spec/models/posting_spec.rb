@@ -34,7 +34,7 @@ RSpec.describe Posting, type: :model do
     let!(:posting_two) { FactoryBot.create(:posting) }
     let!(:posting_three) { FactoryBot.create(:posting) }
 
-    it 'orders postings in update chronological order' do
+    it 'orders postings in create chronological order' do
       expect(Posting.all).to eq [posting_three, posting_two, posting_one]
     end
   end

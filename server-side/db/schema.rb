@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_30_133934) do
+ActiveRecord::Schema.define(version: 2019_11_30_152831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_11_30_133934) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["posting_id"], name: "index_favorites_on_posting_id"
+    t.index ["user_id", "posting_id"], name: "index_favorites_on_user_id_and_posting_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
