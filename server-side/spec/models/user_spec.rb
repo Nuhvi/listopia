@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -15,7 +17,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:postings) }
+    it { is_expected.to have_many(:postings).dependent(:destroy) }
   end
 
   describe 'methods' do

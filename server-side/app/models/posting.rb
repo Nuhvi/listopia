@@ -8,5 +8,6 @@ class Posting < ApplicationRecord
                        inclusion: { in: %w[Apartment House Room Land Other],
                                     message: '%<value>s is not a valid category' }
 
+  default_scope { order(created_at: :desc) }
   belongs_to :user
 end
