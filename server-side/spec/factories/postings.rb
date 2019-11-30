@@ -6,5 +6,7 @@ FactoryBot.define do
     price { Faker::Commerce.price(range: 0..1_000_000.0) }
     desc { Faker::Lorem.paragraph }
     category { %w[Apartment House Room Land Other].sample }
+
+    association :user
   end
 end

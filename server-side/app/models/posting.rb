@@ -7,4 +7,6 @@ class Posting < ApplicationRecord
   validates :category, presence: true,
                        inclusion: { in: %w[Apartment House Room Land Other],
                                     message: '%<value>s is not a valid category' }
+
+  belongs_to :user
 end

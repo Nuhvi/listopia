@@ -18,7 +18,7 @@ RSpec.describe Posting, type: :model do
   end
 
   describe 'associations' do
-    xit { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:user) }
   end
 
   describe 'default scope' do
