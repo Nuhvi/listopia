@@ -14,4 +14,8 @@ class Posting < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :favoriters, through: :favorites, source: :user
+
+  def favorited?
+    !favoriters.empty?
+  end
 end

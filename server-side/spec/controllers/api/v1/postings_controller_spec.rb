@@ -26,21 +26,24 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe Api::V1::PostingsController, type: :controller do
+
+  let(:user) { FactoryBot.create(:user) }
+
   # This should return the minimal set of attributes required to create a valid
   # Posting. As you add validations to Posting, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    FactoryBot.build(:posting, user: user).attributes
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # Api::V1::PostingsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) {}
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -62,21 +65,21 @@ RSpec.describe Api::V1::PostingsController, type: :controller do
     context 'with valid params' do
       it 'creates a new Posting' do
         expect do
-          post :create, params: { api_v1_posting: valid_attributes }, session: valid_session
+          post :create, params: { posting: valid_attributes }, session: valid_session
         end.to change(Posting, :count).by(1)
       end
 
-      it 'renders a JSON response with the new api_v1_posting' do
-        post :create, params: { api_v1_posting: valid_attributes }, session: valid_session
+      it 'renders a JSON response with the new posting' do
+        post :create, params: { posting: valid_attributes }, session: valid_session
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json')
-        expect(response.location).to eq(api_v1_posting_url(Posting.last))
+        expect(response.location).to eq(posting_url(Posting.last))
       end
     end
 
     context 'with invalid params' do
-      it 'renders a JSON response with errors for the new api_v1_posting' do
-        post :create, params: { api_v1_posting: invalid_attributes }, session: valid_session
+      it 'renders a JSON response with errors for the new posting' do
+        post :create, params: { posting: invalid_attributes }, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -86,30 +89,30 @@ RSpec.describe Api::V1::PostingsController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        FactoryBot.build(:posting).attributes
       end
 
-      it 'updates the requested api_v1_posting' do
+      it 'updates the requested posting' do
         posting = Posting.create! valid_attributes
-        put :update, params: { id: posting.to_param, api_v1_posting: new_attributes }, session: valid_session
+        put :update, params: { id: posting.to_param, posting: new_attributes }, session: valid_session
         posting.reload
         skip('Add assertions for updated state')
       end
 
-      it 'renders a JSON response with the api_v1_posting' do
+      it 'renders a JSON response with the posting' do
         posting = Posting.create! valid_attributes
 
-        put :update, params: { id: posting.to_param, api_v1_posting: valid_attributes }, session: valid_session
+        put :update, params: { id: posting.to_param, posting: valid_attributes }, session: valid_session
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
       end
     end
 
     context 'with invalid params' do
-      it 'renders a JSON response with errors for the api_v1_posting' do
+      it 'renders a JSON response with errors for the posting' do
         posting = Posting.create! valid_attributes
 
-        put :update, params: { id: posting.to_param, api_v1_posting: invalid_attributes }, session: valid_session
+        put :update, params: { id: posting.to_param, posting: invalid_attributes }, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -117,7 +120,7 @@ RSpec.describe Api::V1::PostingsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    it 'destroys the requested api_v1_posting' do
+    it 'destroys the requested posting' do
       posting = Posting.create! valid_attributes
       expect do
         delete :destroy, params: { id: posting.to_param }, session: valid_session

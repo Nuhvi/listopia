@@ -2,6 +2,7 @@
 
 class Api::V1::PostingsController < ApplicationController
   before_action :set_posting, only: %i[show update destroy]
+  before_action :set_user
 
   # GET /postings
   def index
@@ -18,6 +19,9 @@ class Api::V1::PostingsController < ApplicationController
   # POST /postings
   def create
     @posting = Posting.new(posting_params)
+    @posting.user = @user
+
+    puts posting_params
 
     if @posting.save
       render json: @posting, status: :created, location: api_v1_posting_url(@posting.id)
@@ -45,6 +49,11 @@ class Api::V1::PostingsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_posting
     @posting = Posting.find(params[:id])
+  end
+
+  # Set current User
+  def set_user
+    @user = User.first
   end
 
   # Only allow a trusted parameter "white list" through.
