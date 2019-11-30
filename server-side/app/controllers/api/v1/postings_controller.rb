@@ -7,7 +7,7 @@ class Api::V1::PostingsController < ApplicationController
   def index
     @postings = Posting.all
 
-    render json: @postings, each_serializer: PostingSerializer
+    render json: @postings, each_serializer: PostingListSerializer
   end
 
   # GET /postings/1
@@ -49,6 +49,6 @@ class Api::V1::PostingsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def posting_params
-    params.fetch(:posting, {}).permit(:title, :price, :desc)
+    params.fetch(:posting, {}).permit(:title, :price, :desc, :category)
   end
 end

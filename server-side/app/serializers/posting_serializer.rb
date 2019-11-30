@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class PostingSerializer < ActiveModel::Serializer
-  attributes :id, :title, :price, :desc
+  attributes :id, :title, :price, :desc, :category
 end
