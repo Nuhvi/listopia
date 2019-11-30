@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :posting do
-    title { 'MyString' }
-    price { 1 }
-    desc { 'MyText' }
-    category { 'MyText' }
+    title { Faker::Lorem.sentence }
+    price { Faker::Commerce.price(range: 0..1_000_000.0) }
+    desc { Faker::Lorem.paragraph }
+    category { %w[Apartment House Room Land Other].sample }
   end
 end
