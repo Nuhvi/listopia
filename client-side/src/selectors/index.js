@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 const getGategory = (state) => state.category;
-const getPostings = (state) => state.postings;
+const getPostings = (state) => state.postings.data;
 
 export default createSelector(
   getGategory,

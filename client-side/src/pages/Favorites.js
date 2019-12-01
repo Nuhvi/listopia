@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostingCard from '../components/PostingCard';
 
-function Favorites({ items }) {
+function Favorites({ postings }) {
   return (
     <div>
       <h1>Favorites</h1>
-      {items.map((item) => (
+      {postings.map((item) => (
         <PostingCard key={item.id} item={item} />
       ))}
     </div>
@@ -15,7 +15,7 @@ function Favorites({ items }) {
 }
 
 Favorites.propTypes = {
-  items: PropTypes.arrayOf(
+  postings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
@@ -26,7 +26,7 @@ Favorites.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  items: state.items.filter((item) => item.favorite),
+  postings: state.postings.data.filter((item) => item.favorite),
 });
 
 export default connect(mapStateToProps)(Favorites);

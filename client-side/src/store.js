@@ -5,7 +5,11 @@ import rootReducer from './reducers';
 const initialState = {
   user: { data: null, pending: true },
   category: null,
-  postings: [],
+  postings: {
+    pending: false,
+    error: false,
+    data: [],
+  },
 };
 
 const middlewares = [thunk];
