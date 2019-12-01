@@ -1,15 +1,15 @@
 import { postings } from './types';
 
-export const fetchProductsPending = () => ({
+export const fetchPending = () => ({
   type: postings.FETCH_PENDING,
 });
 
-export const fetchProductsSuccess = (products) => ({
+export const fetchSuccess = (data) => ({
   type: postings.FETCH_SUCCESS,
-  products,
+  postings: data,
 });
 
-export const fetchProductsError = (error) => ({
+export const fetchError = (error) => ({
   type: postings.FETCH_ERROR,
   error,
 });

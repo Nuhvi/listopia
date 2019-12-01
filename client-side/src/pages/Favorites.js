@@ -26,7 +26,7 @@ Favorites.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  postings: state.postings.data.filter((item) => item.favorite),
+  postings: state.postings.data.filter((posting) => posting.favorite),
 });
 
 export default connect(mapStateToProps)(Favorites);

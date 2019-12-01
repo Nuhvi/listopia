@@ -1,11 +1,7 @@
-export const postings = ({
+export const postings = {
   FETCH_PENDING: 'FETCH_POSTINGS_PENDING',
   FETCH_SUCCESS: 'FETCH_POSTINGS_SUCCESS',
   FETCH_ERROR: 'FETCH_POSTINGS_ERROR',
-});
+};
 
-export const user = ({
-  FETCH_PENDING: 'FETCH_POSTINGS_PENDING',
-  FETCH_SUCCESS: 'FETCH_POSTINGS_SUCCESS',
-  FETCH_ERROR: 'FETCH_POSTINGS_ERROR',
-});
+export const user = {};

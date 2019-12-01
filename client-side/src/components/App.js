@@ -7,7 +7,7 @@ import ItemView from '../pages/ItemView';
 import NotFound from '../pages/404';
 import Favorites from '../pages/Favorites';
 import Categories from '../pages/Categories';
-import CategorizedList from '../pages/CategorizedList';
+import Postings from '../pages/Postings';
 
 document
   .querySelector('meta[name=theme-color]')
@@ -37,7 +37,7 @@ export default () => (
           <ItemView />
         </Route>
         <Route path="/items/category/:category">
-          <CategorizedList />
+          <Postings />
         </Route>
         <Route path="/favorites">
           <Favorites />

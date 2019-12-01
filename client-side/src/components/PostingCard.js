@@ -4,50 +4,43 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleFavorite } from '../actions';
 
-const ItemCard = ({ item, toggleFavorite }) => (
+const PostingCard = ({ posting, toggleFavorite }) => (
   <div>
-    <Link to={(location) => (
-      { ...location, pathname: `/items/${item.id}` }
-    )}
+    <Link
+      to={(location) => ({ ...location, pathname: `/postings/${posting.id}` })}
     >
       <article>
         <p>
           <span>ID: </span>
-          {item.id}
+          {posting.id}
         </p>
         <p>
           <span>Price: </span>
-          {item.price}
-        </p>
-        <p>
-          <span>Desc: </span>
-          {item.desc}
+          {posting.price}
         </p>
         <p>
           <span>Catg: </span>
-          {item.category}
+          {posting.category}
         </p>
         <p>
           <span>Favorite: </span>
-          {`${item.favorite}`}
+          {`${posting['favorited?']}`}
         </p>
-
       </article>
     </Link>
-    <button type="button" onClick={() => toggleFavorite(item.id)}>
-        Favorite
+    <button type="button" onClick={() => toggleFavorite(posting.id)}>
+      Favorite
     </button>
   </div>
 );
 
-ItemCard.propTypes = {
+PostingCard.propTypes = {
   toggleFavorite: PropTypes.func.isRequired,
-  item: PropTypes.shape({
+  posting: PropTypes.shape({
     id: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
-    desc: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    favorite: PropTypes.bool.isRequired,
+    'favorited?': PropTypes.bool.isRequired,
   }).isRequired,
 };
 
@@ -55,4 +48,4 @@ const mapDispatchToProps = (dispatch) => ({
   toggleFavorite: (id) => dispatch(toggleFavorite(id)),
 });
 
-export default connect(null, mapDispatchToProps)(ItemCard);
+export default connect(null, mapDispatchToProps)(PostingCard);

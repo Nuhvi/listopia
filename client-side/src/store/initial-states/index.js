@@ -1,6 +1,6 @@
 export const postings = {
   pending: false,
-  error: false,
+  error: null,
   data: [],
 };
 

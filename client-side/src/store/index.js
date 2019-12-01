@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import rootReducer from '../reducers';
 import { category, postings } from './initial-states';
 
@@ -9,7 +10,7 @@ const initialState = {
   postings,
 };
 
-const middlewares = [thunk];
+const middlewares = [logger, thunk];
 
 export default createStore(
   rootReducer,

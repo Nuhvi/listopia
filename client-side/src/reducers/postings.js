@@ -8,6 +8,18 @@ export default (state = initialState, action) => {
         ...state,
         pending: true,
       };
+    case postings.FETCH_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        data: action.postings,
+      };
+    case postings.FETCH_ERROR:
+      return {
+        ...state,
+        pending: false,
+        error: action.error,
+      };
     case 'TOGGLE_FAVORITE':
       return state.map((item) => (item.id === action.id
         ? { ...item, favorite: !item.favorite } : item));
@@ -15,12 +27,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-
-// fetch('https://listopia-srvr.herokuapp.com/api/v1/postings', { mode: 'cors' })
-//   .then((res) => res.text())
-//   .then((data) => {
-//     console.log(data);
-//   });
-// return state.map((item) => (item.id === action.id
-//   ? { ...item, favorite: !item.favorite }
-//   : item));
