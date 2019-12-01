@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ItemCard from '../components/ItemCard';
-import getItemsByCategory from '../selectors';
+import PostingCard from '../components/PostingCard';
+import filterPostingsByCategory from '../selectors';
 import { setCategory } from '../actions';
 import Loading from '../components/Loading';
 
-const CategorizedList = ({ items, setCategory }) => {
+const CategorizedList = ({ postings, setCategory }) => {
   const { category } = useParams();
   setCategory(category);
 
   const [state] = useState({ loading: true });
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/users/1')
+    fetch('http://localhost:3000/api/v1/postings')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -24,8 +24,8 @@ const CategorizedList = ({ items, setCategory }) => {
   return (
     <div>
       {state.loading ? <Loading /> : <h1>{category}</h1>}
-      {items.map((item) => (
-        <ItemCard key={item.id} item={item} />
+      {postings.map((item) => (
+        <PostingCard key={item.id} item={item} />
       ))}
     </div>
   );
@@ -33,7 +33,7 @@ const CategorizedList = ({ items, setCategory }) => {
 
 CategorizedList.propTypes = {
   setCategory: PropTypes.func.isRequired,
-  items: PropTypes.arrayOf(
+  postings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
@@ -44,7 +44,7 @@ CategorizedList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  items: getItemsByCategory(state),
+  postings: filterPostingsByCategory(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,10 +1,17 @@
-import { createStore } from 'redux';
-import reducer from './reducers';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
 
 const initialState = {
   user: { data: null, pending: true },
   category: null,
-  items: [],
+  postings: [],
 };
 
-export default createStore(reducer, initialState);
+const middlewares = [thunk];
+
+export default createStore(
+  rootReducer,
+  initialState,
+  applyMiddleware(...middlewares),
+);

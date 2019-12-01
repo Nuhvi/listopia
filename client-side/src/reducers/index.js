@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import items from './items';
+import postings from './postings';
 import user from './user';
 import category from './category';
 
-export default combineReducers({ user, items, category });
+export default combineReducers({ user, postings, category });

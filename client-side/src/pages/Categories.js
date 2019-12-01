@@ -1,13 +1,13 @@
 import React from 'react';
-import Category from '../components/Category';
+import CategoryCard from '../components/CategoryCard';
 import categories from '../config/categories';
 
 export default () => (
   <div>
     {categories.map((category) => (
-      <Category key={category} category={category}>
+      <CategoryCard key={category} category={category}>
         {category}
-      </Category>
+      </CategoryCard>
     ))}
   </div>
 );

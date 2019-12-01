@@ -1,14 +1,14 @@
 import { createSelector } from 'reselect';
 
 const getGategory = (state) => state.category;
-const getItems = (state) => state.items;
+const getPostings = (state) => state.postings;
 
 export default createSelector(
   getGategory,
-  getItems,
-  (category, items) => (
+  getPostings,
+  (category, postings) => (
     category
-      ? items.filter((item) => item.category === category)
-      : items
+      ? postings.filter((item) => item.category === category)
+      : postings
   ),
 );
