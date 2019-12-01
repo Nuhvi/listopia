@@ -1,15 +1,12 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import rootReducer from '../reducers';
+import { category, postings } from './initial-states';
 
 const initialState = {
   user: { data: null, pending: true },
-  category: null,
-  postings: {
-    pending: false,
-    error: false,
-    data: [],
-  },
+  category,
+  postings,
 };
 
 const middlewares = [thunk];
