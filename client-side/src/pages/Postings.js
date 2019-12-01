@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import PostingCard from '../components/PostingCard';
 import { setCategory } from '../actions';
 import fetchPostings from '../fetching/postings';
-import filterPostingsByCategory from '../selectors';
+import { filterPostingsByCategory } from '../selectors';
 
 const Postings = ({ postings, setCategory, pending }) => {
   const { category } = useParams();

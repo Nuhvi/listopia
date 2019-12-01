@@ -4,7 +4,7 @@ import { fetchPending, fetchSuccess, fetchError } from '../actions/postings';
 export default (dispatch) => {
   dispatch(fetchPending());
   axios
-    .get('http://localhost:3000/api/v1/postings')
+    .get('https:/listopia-srvr.herokuapp.com/api/v1/postings')
     .then((response) => {
       if (response.error) {
         throw response.error;
