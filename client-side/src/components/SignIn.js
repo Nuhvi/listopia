@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useTheme } from '@material-ui/core/styles';
 import BounceLogo from './BounceLogo';
-import Theme from '../config/theme';
 import { fetchingUserPending, fetchingUserSuccess, signIn } from '../actions';
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
 
-  background-color: ${Theme.colors.highlight.main};
+  background-color: ${(props) => props.background};
   color: white;
 
   display: flex;
@@ -42,15 +42,6 @@ const LoginForm = styled.form`
   &[data-authenticated='false'] {
     margin-top: 3rem;
     height: 150px;
-  }
-
-  input {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    color: white;
-
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
   }
 `;
 
@@ -87,10 +78,15 @@ const SignIn = ({ user, fetchingUserPending, signIn }) => {
     }
   });
 
+  const mainColor = useTheme().palette.primary.main;
+
   return (
     <div>
-      <Container data-authenticated={!!user.data}>
-        <BounceLogo size="9rem" />
+      <Container
+        background={mainColor}
+        data-authenticated={!!user.data}
+      >
+        <BounceLogo size="9rem" color={mainColor} />
         <LoginForm
           onSubmit={submitHandler}
           data-authenticated={user.data || !user.pending}

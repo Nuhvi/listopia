@@ -18,11 +18,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-input {
-  border: none;
-  border-bottom: 1px solid black;
-  height: 2rem;
-  background: none;
-  outline: none;
-}
