@@ -24,7 +24,7 @@ const PostingCard = ({ posting, toggleFavorite }) => (
         </p>
         <p>
           <span>Favorite: </span>
-          {`${posting['favorited?']}`}
+          {`${posting.favorited}`}
         </p>
       </article>
     </Link>
@@ -40,7 +40,7 @@ PostingCard.propTypes = {
     id: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
-    'favorited?': PropTypes.bool.isRequired,
+    favorited: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

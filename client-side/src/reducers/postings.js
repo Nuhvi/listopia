@@ -20,9 +20,9 @@ export default (state = initialState, action) => {
         pending: false,
         error: action.error,
       };
-    case 'TOGGLE_FAVORITE':
-      return state.map((item) => (item.id === action.id
-        ? { ...item, favorite: !item.favorite } : item));
+    case postings.TOGGLE_FAVORITE:
+      return state.data.map((posting) => (posting.id === action.id
+        ? { ...posting, favorited: !posting.favorited } : posting));
     default:
       return state;
   }

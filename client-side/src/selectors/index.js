@@ -16,6 +16,6 @@ export const filterPostingsByCategory = createSelector(
 export const filterFavoritedPostings = createSelector(
   getPostings,
   (postings) => (
-    postings.filter((posting) => posting['favorited?'])
+    postings.filter((posting) => posting.favorited)
   ),
 );

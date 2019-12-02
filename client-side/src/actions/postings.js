@@ -11,7 +11,7 @@ const fetchSuccess = (data) => ({
   postings: data,
 });
 
-export const fetchError = (error) => ({
+const fetchError = (error) => ({
   type: postings.FETCH_ERROR,
   error,
 });
@@ -30,3 +30,8 @@ export const fetchPostings = (dispatch) => {
       dispatch(fetchError(error));
     });
 };
+
+export const toggleFavorite = (id) => ({
+  type: postings.TOGGLE_FAVORITE,
+  id,
+});
