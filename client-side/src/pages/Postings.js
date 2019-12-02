@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PostingCard from '../components/PostingCard';
 import { setCategory, fetchPostings } from '../actions';
-import { filterPostingsByCategory } from '../selectors';
+import filterPostingsByCategory from '../selectors';
 
 const Postings = ({
   postings, setCategory, pending, fetchPostings,
