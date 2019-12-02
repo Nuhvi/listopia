@@ -33,5 +33,14 @@ RSpec.describe User, type: :model do
         end.to change { user.favorite_postings.count }.by(1)
       end
     end
+
+    describe 'unmark_favorite' do
+      it 'adds posting to favorites' do
+        user.mark_favorite(posting)
+        expect do
+          user.unmark_favorite(posting)
+        end.to change { user.favorite_postings.count }.by(-1)
+      end
+    end
   end
 end

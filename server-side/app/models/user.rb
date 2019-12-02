@@ -16,4 +16,11 @@ class User < ApplicationRecord
   def mark_favorite(posting)
     favorites.create(posting: posting)
   end
+
+  def unmark_favorite(posting)
+    favorite = Favorite.find_by(posting: posting)
+    return unless favorite
+
+    favorite.destroy
+  end
 end

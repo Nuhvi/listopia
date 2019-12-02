@@ -1,49 +1,34 @@
 # frozen_string_literal: true
 
 class Api::V1::FavoritesController < ApplicationController
-  before_action :set_favorite, only: %i[show update destroy]
+  before_action :set_posting, only: %i[create destroy]
 
   # GET /favorites
   def index
-    @favorites = Favorite.all
-    render json: @favorites.map(&:posting)
-  end
-
-  # GET /favorites/1
-  def show
-    render json: @favorite.posting
+    @favorited_postings = Favorite.all.map(&:posting)
+    render json: @favorited_postings
   end
 
   # POST /favorites
   def create
-    @favorite = Favorite.new(favorite_params)
-
-    if @favorite.save
-      render json: @favorite, status: :created, location: @favorite
+    favorite = @user.mark_favorite(@posting)
+    if favorite.valid?
+      render json: @posting, status: :created
     else
-      render json: @favorite.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /favorites/1
-  def update
-    if @favorite.update(favorite_params)
-      render json: @favorite
-    else
-      render json: @favorite.errors, status: :unprocessable_entity
+      render json: favorite.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /favorites/1
   def destroy
-    @favorite.destroy
+    @user.unmark_favorite(@posting)
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_favorite
-    @favorite = Favorite.find(params[:id])
+  def set_posting
+    @posting = Posting.find(params[:posting_id])
   end
 
   # Only allow a trusted parameter "white list" through.

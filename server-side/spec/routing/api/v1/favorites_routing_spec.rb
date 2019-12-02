@@ -8,24 +8,12 @@ RSpec.describe Api::V1::FavoritesController, type: :routing do
       expect(get: '/api/v1/favorites').to route_to('api/v1/favorites#index')
     end
 
-    xit 'routes to #show' do
-      expect(get: '/api/v1/favorites/1').to route_to('api/v1/favorites#show', id: '1')
-    end
-
     it 'routes to #create' do
-      expect(post: '/api/v1/favorites').to route_to('api/v1/favorites#create')
-    end
-
-    xit 'routes to #update via PUT' do
-      expect(put: '/api/v1/favorites/1').to route_to('api/v1/favorites#update', id: '1')
-    end
-
-    xit 'routes to #update via PATCH' do
-      expect(patch: '/api/v1/favorites/1').to route_to('api/v1/favorites#update', id: '1')
+      expect(post: '/api/v1/favorites/1').to route_to('api/v1/favorites#create', posting_id: '1')
     end
 
     it 'routes to #destroy' do
-      expect(delete: '/api/v1/favorites/1').to route_to('api/v1/favorites#destroy', id: '1')
+      expect(delete: '/api/v1/favorites/1').to route_to('api/v1/favorites#destroy', posting_id: '1')
     end
   end
 end
