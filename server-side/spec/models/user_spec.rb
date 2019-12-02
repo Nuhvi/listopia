@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
   describe 'methods' do
     let(:user) { FactoryBot.create(:user) }
     let(:posting) { FactoryBot.create(:posting) }
-    
+
     describe 'mark_favorite' do
       it 'adds posting to favorites' do
         expect do
