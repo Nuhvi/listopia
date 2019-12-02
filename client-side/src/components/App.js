@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import ItemView from '../pages/ItemView';
+import PostingView from '../pages/PostingView';
 import NotFound from '../pages/404';
 import Favorites from '../pages/Favorites';
 import Categories from '../pages/Categories';
@@ -33,10 +33,10 @@ export default () => (
         <Route path="/" exact>
           <Categories />
         </Route>
-        <Route path="/items/:id/" exact>
-          <ItemView />
+        <Route path="/postings/:id/" exact>
+          <PostingView />
         </Route>
-        <Route path="/items/category/:category">
+        <Route path="/postings/category/:category">
           <Postings />
         </Route>
         <Route path="/favorites">

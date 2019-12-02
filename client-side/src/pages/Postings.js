@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PostingCard from '../components/PostingCard';
-import { setCategory } from '../actions';
-import fetchPostings from '../fetching/postings';
+import { setCategory, fetchPostings } from '../actions';
 import { filterPostingsByCategory } from '../selectors';
 
-const Postings = ({ postings, setCategory, pending }) => {
+const Postings = ({
+  postings, setCategory, pending, fetchPostings,
+}) => {
   const { category } = useParams();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setCategory(category);
-    fetchPostings(dispatch);
-  }, [category, setCategory, dispatch]);
+    fetchPostings();
+  }, [category, setCategory, fetchPostings]);
 
   return (
     <div>
@@ -28,13 +28,12 @@ const Postings = ({ postings, setCategory, pending }) => {
 };
 
 Postings.propTypes = {
+  fetchPostings: PropTypes.func.isRequired,
   setCategory: PropTypes.func.isRequired,
   pending: PropTypes.bool.isRequired,
   postings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-      category: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };
@@ -46,6 +45,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setCategory: (category) => dispatch(setCategory(category)),
+  fetchPostings: () => fetchPostings(dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Postings);

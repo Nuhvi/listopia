@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import PostingCard from '../components/PostingCard';
-import fetchPostings from '../fetching/postings';
+import { fetchPostings } from '../actions';
 import { filterFavoritedPostings } from '../selectors';
 
-function Favorites({ postings }) {
-  const dispatch = useDispatch();
-
+const Favorites = ({ postings, fetchPostings }) => {
   useEffect(() => {
-    fetchPostings(dispatch);
-  }, [dispatch]);
+    fetchPostings();
+  }, [fetchPostings]);
 
   return (
     <div>
@@ -20,14 +18,14 @@ function Favorites({ postings }) {
       ))}
     </div>
   );
-}
+};
 
 Favorites.propTypes = {
+  fetchPostings: PropTypes.func.isRequired,
   postings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
-      desc: PropTypes.string.isRequired,
       category: PropTypes.string.isRequired,
     }),
   ).isRequired,
@@ -37,4 +35,8 @@ const mapStateToProps = (state) => ({
   postings: filterFavoritedPostings(state),
 });
 
-export default connect(mapStateToProps)(Favorites);
+const mapDispatchToProps = (dispatch) => ({
+  fetchPostings: () => fetchPostings(dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

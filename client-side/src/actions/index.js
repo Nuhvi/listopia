@@ -14,14 +14,11 @@ export const signOut = () => ({
   type: 'SIGN_OUT',
 });
 
-
-export const setCategory = (category) => ({
-  type: 'SET_CATEGORY',
-  category,
-});
-
-
 export const toggleFavorite = (id) => ({
   type: 'TOGGLE_FAVORITE',
   id,
 });
+
+export { fetchPostings } from './postings';
+
+export { default as setCategory } from './category';
