@@ -14,6 +14,7 @@ export const signOut = () => ({
   type: 'SIGN_OUT',
 });
 
-export { fetchPostings, toggleFavorite } from './postings';
-
+export { default as fetchFavorites } from './favorites';
+export { default as fetchPostings } from './postings';
 export { default as setCategory } from './category';
+export { default as toggleFavorite } from './toggle-favorite';

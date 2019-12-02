@@ -45,7 +45,7 @@ PostingCard.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleFavorite: (id) => dispatch(toggleFavorite(id)),
+  toggleFavorite: (id) => toggleFavorite(dispatch, id),
 });
 
 export default connect(null, mapDispatchToProps)(PostingCard);

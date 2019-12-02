@@ -25,12 +25,15 @@ RSpec.describe User, type: :model do
   describe 'methods' do
     let(:user) { FactoryBot.create(:user) }
     let(:posting) { FactoryBot.create(:posting) }
-    
-    describe 'mark_favorite' do
-      it 'adds posting to favorites' do
+
+    describe 'toggle_favorite' do
+      it 'adds toggle posting in an out of favorites' do
         expect do
-          user.mark_favorite(posting)
+          user.toggle_favorite(posting)
         end.to change { user.favorite_postings.count }.by(1)
+        expect do
+          user.toggle_favorite(posting)
+        end.to change { user.favorite_postings.count }.by(-1)
       end
     end
   end

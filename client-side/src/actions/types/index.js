@@ -1,8 +1,20 @@
+const fetchingTypes = (TYPE) => ({
+  FETCH_PENDING: `FETCH_${TYPE}_PENDING`,
+  FETCH_SUCCESS: `FETCH_${TYPE}_SUCCESS`,
+  FETCH_ERROR: `FETCH_${TYPE}_ERROR`,
+});
+
+const postingsListTypes = (TYPE) => ({
+  ...fetchingTypes(TYPE),
+  TOGGLE_FAVORITE: `TOGGLE_${TYPE}_FAVORITE`,
+});
+
 export const postings = {
-  FETCH_PENDING: 'FETCH_POSTINGS_PENDING',
-  FETCH_SUCCESS: 'FETCH_POSTINGS_SUCCESS',
-  FETCH_ERROR: 'FETCH_POSTINGS_ERROR',
-  TOGGLE_FAVORITE: 'TOGGLE_FAVORITE',
+  ...postingsListTypes('POSTINGS'),
+};
+
+export const favorites = {
+  ...postingsListTypes('FAVORITES'),
 };
 
 export const user = {};

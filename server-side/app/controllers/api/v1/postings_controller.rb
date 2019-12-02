@@ -2,7 +2,6 @@
 
 class Api::V1::PostingsController < ApplicationController
   before_action :set_posting, only: %i[show update destroy]
-  before_action :set_user
 
   # GET /postings
   def index
@@ -48,11 +47,6 @@ class Api::V1::PostingsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_posting
     @posting = Posting.find(params[:id])
-  end
-
-  # Set current User
-  def set_user
-    @user = User.first
   end
 
   # Only allow a trusted parameter "white list" through.
