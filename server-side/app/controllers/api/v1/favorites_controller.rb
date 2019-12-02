@@ -6,7 +6,6 @@ class Api::V1::FavoritesController < ApplicationController
   # GET /favorites
   def index
     @favorites = Favorite.all
-
     render json: @favorites.map(&:posting)
   end
 
