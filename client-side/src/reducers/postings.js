@@ -21,8 +21,12 @@ export default (state = initialState, action) => {
         error: action.error,
       };
     case postings.TOGGLE_FAVORITE:
-      return state.data.map((posting) => (posting.id === action.id
-        ? { ...posting, favorited: !posting.favorited } : posting));
+      return {
+        ...state,
+        data: state.data.map((posting) => (posting.id === action.id
+          ? { ...posting, favorited: !posting.favorited }
+          : posting)),
+      };
     default:
       return state;
   }

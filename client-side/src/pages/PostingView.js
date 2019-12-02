@@ -36,7 +36,7 @@ const Posting = ({ postings, toggleFavorite, fetchPostings }) => {
       </p>
       <p>
         <span>Favorite: </span>
-        {`${posting['favorited?']}`}
+        {`${posting.favorited}`}
       </p>
       <button type="button" onClick={() => toggleFavorite(posting.id)}>
         Favorite
@@ -56,7 +56,7 @@ Posting.propTypes = {
       price: PropTypes.number.isRequired,
       desc: PropTypes.string.isRequired,
       category: PropTypes.string.isRequired,
-      'favorited?': PropTypes.bool.isRequired,
+      favorited: PropTypes.bool.isRequired,
     }),
   ).isRequired,
 };
