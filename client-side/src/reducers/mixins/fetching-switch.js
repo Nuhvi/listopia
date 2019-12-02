@@ -1,4 +1,4 @@
-export default ({ initialState, types }) => (state = initialState, action) => {
+export default ({ state, action, types }) => {
   switch (action.type) {
     case types.FETCH_PENDING:
       return {
@@ -16,13 +16,6 @@ export default ({ initialState, types }) => (state = initialState, action) => {
         ...state,
         pending: false,
         error: action.error,
-      };
-    case types.TOGGLE_FAVORITE:
-      return {
-        ...state,
-        data: state.data.map((posting) => (posting.id === action.id
-          ? { ...posting, favorited: !posting.favorited }
-          : posting)),
       };
     default:
       return state;

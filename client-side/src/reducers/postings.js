@@ -1,5 +1,17 @@
 import { postings } from '../actions/types';
 import { postings as initialState } from '../store/initial-states';
-import postingListReducers from './mixins/posting-list-reducer';
+import fetchingSwitch from './mixins/fetching-switch';
 
-export default postingListReducers({ initialState, types: postings });
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case postings.TOGGLE_FAVORITE:
+      return {
+        ...state,
+        data: state.data.map((posting) => (posting.id === action.id
+          ? { ...posting, favorited: !posting.favorited }
+          : posting)),
+      };
+    default:
+      return fetchingSwitch({ state, action, types: postings });
+  }
+};
