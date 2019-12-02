@@ -13,7 +13,7 @@ const Favorites = ({ favorites, fetchFavorites }) => {
     <div>
       <h1>Favorites</h1>
       {favorites.map((posting) => (
-        <PostingCard key={posting.id} posting={posting} />
+        posting.favorited ? <PostingCard key={posting.id} posting={posting} /> : ''
       ))}
     </div>
   );

@@ -4,8 +4,11 @@ Rails.application.routes.draw do
     namespace  :v1 do
       resources :postings
       resources :favorites, only: [:index]
-      post 'favorites/:posting_id', to: 'favorites#create', as: :favorite_create
-      delete 'favorites/:posting_id', to: 'favorites#destroy',as: :favorite_delete
+      resources :favorites do
+        member do
+          post :toggle
+        end
+      end
     end
   end
 end

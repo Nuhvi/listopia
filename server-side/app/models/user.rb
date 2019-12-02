@@ -13,14 +13,12 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_postings, through: :favorites, source: :posting
 
-  def mark_favorite(posting)
-    favorites.create(posting: posting)
-  end
-
-  def unmark_favorite(posting)
+  def toggle_favorite(posting)
     favorite = Favorite.find_by(posting: posting)
-    return unless favorite
-
-    favorite.destroy
+    if favorite
+      favorite.destroy
+    else
+      favorites.create(posting: posting)
+    end
   end
 end

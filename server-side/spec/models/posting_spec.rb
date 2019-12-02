@@ -46,7 +46,7 @@ RSpec.describe Posting, type: :model do
     describe 'favorited?' do
       it 'checks if the Posting is favorited' do
         expect(posting.favorited?).to be false
-        user.mark_favorite(posting)
+        user.toggle_favorite(posting)
         expect(posting.favorited?).to be true
       end
     end
