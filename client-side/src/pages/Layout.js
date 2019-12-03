@@ -49,8 +49,12 @@ const Layout = ({ title, children, mainColor }) => {
 
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
-  mainColor: PropTypes.string.isRequired,
+  mainColor: PropTypes.string,
   children: PropTypes.element.isRequired,
+};
+
+Layout.defaultProps = {
+  mainColor: '',
 };
 
 export default Layout;

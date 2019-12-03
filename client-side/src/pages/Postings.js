@@ -19,10 +19,12 @@ const Postings = ({
 
   return (
     <Layout title={category}>
-      {pending ? <div>Looding</div> : ''}
-      {postings.map((posting) => (
-        <PostingCard key={posting.id} posting={posting} />
-      ))}
+      <div>
+        {pending ? <div>Looding</div> : ''}
+        {postings.map((posting) => (
+          <PostingCard key={posting.id} posting={posting} />
+        ))}
+      </div>
     </Layout>
   );
 };

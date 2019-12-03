@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { toggleFavorite } from '../actions';
+import FavoriteButton from './FavoriteButton';
 
-const PostingCard = ({ posting, toggleFavorite }) => (
+const PostingCard = ({ posting }) => (
   <div>
     <Link
       to={(location) => ({ ...location, pathname: `/postings/${posting.id}` })}
@@ -28,14 +27,11 @@ const PostingCard = ({ posting, toggleFavorite }) => (
         </p>
       </article>
     </Link>
-    <button type="button" onClick={() => toggleFavorite(posting.id)}>
-      Favorite
-    </button>
+    <FavoriteButton postingId={posting.id} />
   </div>
 );
 
 PostingCard.propTypes = {
-  toggleFavorite: PropTypes.func.isRequired,
   posting: PropTypes.shape({
     id: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
@@ -44,8 +40,4 @@ PostingCard.propTypes = {
   }).isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleFavorite: (id) => toggleFavorite(dispatch, id),
-});
-
-export default connect(null, mapDispatchToProps)(PostingCard);
+export default PostingCard;

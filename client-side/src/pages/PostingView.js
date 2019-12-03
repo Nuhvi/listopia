@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toggleFavorite, fetchPostings } from '../actions';
+import FavoriteButton from '../components/FavoriteButton';
 
 const PostingNotFound = () => (
   <p>Posting Not Found</p>
 );
 
-const Posting = ({ postings, toggleFavorite, fetchPostings }) => {
+const Posting = ({ postings, fetchPostings }) => {
   useEffect(() => {
     fetchPostings();
   }, [fetchPostings]);
@@ -38,9 +39,7 @@ const Posting = ({ postings, toggleFavorite, fetchPostings }) => {
         <span>Favorite: </span>
         {`${posting.favorited}`}
       </p>
-      <button type="button" onClick={() => toggleFavorite(posting.id)}>
-        Favorite
-      </button>
+      <FavoriteButton postingId={posting.id} />
     </article>
   ) : (
     <PostingNotFound />
@@ -49,7 +48,6 @@ const Posting = ({ postings, toggleFavorite, fetchPostings }) => {
 
 Posting.propTypes = {
   fetchPostings: PropTypes.func.isRequired,
-  toggleFavorite: PropTypes.func.isRequired,
   postings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
