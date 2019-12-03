@@ -21,9 +21,13 @@ const Postings = ({
   return (
     <Layout title={category}>
       <CustomGrid columns="2">
-        {pending ? <div>Looding</div> : ''}
         {postings.map((posting) => (
-          <PostingCard key={posting.id} posting={posting} />
+          <PostingCard
+            key={posting.id}
+            posting={posting}
+          >
+            {category}
+          </PostingCard>
         ))}
       </CustomGrid>
     </Layout>

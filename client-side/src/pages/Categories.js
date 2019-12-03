@@ -8,7 +8,11 @@ export default () => (
   <Layout title="What property do you want to buy?" mainColor="white">
     <CustomGrid columns="2">
       {categories.map((category) => (
-        <CategoryCard category={category.name} icon={category.icon}>
+        <CategoryCard
+          key={category.name}
+          category={category.name}
+          icon={category.icon}
+        >
           {category}
         </CategoryCard>
       ))}

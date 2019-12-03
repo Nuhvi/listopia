@@ -26,8 +26,8 @@ const CustomGrid = ({
 };
 
 CustomGrid.propTypes = {
-  children: PropTypes.element.isRequired,
-  columns: PropTypes.element,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  columns: PropTypes.string,
   gap: PropTypes.string,
   margin: PropTypes.string,
 };
