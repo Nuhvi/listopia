@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useTheme } from '@material-ui/core/styles';
+import { Input } from '@material-ui/core';
 import BounceLogo from './BounceLogo';
 import { fetchingUserPending, fetchingUserSuccess, signIn } from '../actions';
 
@@ -82,21 +83,18 @@ const SignIn = ({ user, fetchingUserPending, signIn }) => {
 
   return (
     <div>
-      <Container
-        background={mainColor}
-        data-authenticated={!!user.data}
-      >
+      <Container background={mainColor} data-authenticated={!!user.data}>
         <BounceLogo size="9rem" color={mainColor} />
         <LoginForm
           onSubmit={submitHandler}
           data-authenticated={user.data || !user.pending}
         >
-          <label htmlFor="name">
-            <p>Username</p>
-            <input type="text" id="name" placeholder="Name" />
-          </label>
+          <Input
+            placeholder="Name"
+            inputProps={{ 'aria-label': 'name', name: 'name' }}
+          />
 
-          <input type="submit" value="login" />
+          <Input type="submit" value="login" />
         </LoginForm>
       </Container>
     </div>

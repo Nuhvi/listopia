@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import PostingCard from '../components/PostingCard';
 import { setCategory, fetchPostings } from '../actions';
 import filterPostingsByCategory from '../selectors';
+import Layout from './Layout';
 
 const Postings = ({
   postings, setCategory, pending, fetchPostings,
@@ -17,13 +18,12 @@ const Postings = ({
   }, [category, setCategory, fetchPostings]);
 
   return (
-    <div>
+    <Layout title={category}>
       {pending ? <div>Looding</div> : ''}
-      <h1>{category}</h1>
       {postings.map((posting) => (
         <PostingCard key={posting.id} posting={posting} />
       ))}
-    </div>
+    </Layout>
   );
 };
 

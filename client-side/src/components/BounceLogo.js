@@ -39,7 +39,7 @@ const WhiteCircle = styled.div`
       opacity: 1;
     }
   }
-  animation: white-grow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+  animation: white-grow ${(props) => props.animationDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 `;
 
 const Icon = styled.img`
@@ -82,8 +82,8 @@ const Container = styled.div`
 
 const BounceLogo = ({ size, color }) => (
   <Container size={size}>
-    <WhiteCircle />
-    <Icon animationDuration bacground={color} />
+    <WhiteCircle animationDuration="0.5s" />
+    <Icon animationDuration="0.5s" bacground={color} />
   </Container>
 );
 
