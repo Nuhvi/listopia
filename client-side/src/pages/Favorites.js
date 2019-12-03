@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PostingCard from '../components/PostingCard';
 import { fetchFavorites } from '../actions';
 import Layout from './Layout';
+import CustomGrid from '../components/CustomGrid';
 
 const Favorites = ({ favorites, fetchFavorites }) => {
   useEffect(() => {
@@ -12,9 +13,11 @@ const Favorites = ({ favorites, fetchFavorites }) => {
 
   return (
     <Layout title="Favorites">
-      {favorites.map((posting) => (
-        <PostingCard key={posting.id} posting={posting} />
-      ))}
+      <CustomGrid columns="2">
+        {favorites.map((posting) => (
+          <PostingCard key={posting.id} posting={posting} />
+        ))}
+      </CustomGrid>
     </Layout>
   );
 };

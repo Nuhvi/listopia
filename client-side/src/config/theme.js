@@ -25,9 +25,9 @@ export default createMuiTheme({
       primary: '#4d5360',
     },
   },
-  spacing: (n) => `${n * 4}px`,
+  spacing: (n) => `${n * 8}px`,
   shadows: [
     'none',
-    '0px 0px 5px 1px rgba(0,0,0,0.06)',
+    '0px 0px 5px 1px rgba(0,0,0,0.1)',
   ],
 });

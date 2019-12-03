@@ -6,6 +6,7 @@ import PostingCard from '../components/PostingCard';
 import { setCategory, fetchPostings } from '../actions';
 import filterPostingsByCategory from '../selectors';
 import Layout from './Layout';
+import CustomGrid from '../components/CustomGrid';
 
 const Postings = ({
   postings, setCategory, pending, fetchPostings,
@@ -19,12 +20,12 @@ const Postings = ({
 
   return (
     <Layout title={category}>
-      <div>
+      <CustomGrid columns="2">
         {pending ? <div>Looding</div> : ''}
         {postings.map((posting) => (
           <PostingCard key={posting.id} posting={posting} />
         ))}
-      </div>
+      </CustomGrid>
     </Layout>
   );
 };

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FavoriteButton from './FavoriteButton';
 
-
 const PostingCard = ({ posting }) => (
   <div>
     <Link
