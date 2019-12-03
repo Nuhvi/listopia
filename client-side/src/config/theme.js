@@ -21,5 +21,8 @@ export default createMuiTheme({
       main: '#232a38',
       light: '#a7a9ac',
     },
+    text: {
+      primary: '#4d5360',
+    },
   },
 });
