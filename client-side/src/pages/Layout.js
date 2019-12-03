@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Container, Typography, makeStyles,
-} from '@material-ui/core';
+import { Container, Typography, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Layout = ({ title, children, mainColor }) => {
+const Layout = ({
+  title, children, mainColor, pending, error,
+}) => {
   const classes = useStyles();
 
   return (
@@ -36,12 +36,14 @@ const Layout = ({ title, children, mainColor }) => {
       ) : (
         ''
       )}
-      <div
-        className={classes.main}
-        style={{ backgroundColor: mainColor }}
-      >
-        {children}
-      </div>
+      {pending ? (<p>Loading...</p>) : ''}
+      {error ? (<p>Something Went Wrong!</p>) : ''}
+      {!pending && !error ? (
+        <div className={classes.main} style={{ backgroundColor: mainColor }}>
+          {children}
+        </div>
+      ) : ''}
+
     </div>
   );
 };
@@ -50,10 +52,14 @@ Layout.propTypes = {
   title: PropTypes.string.isRequired,
   mainColor: PropTypes.string,
   children: PropTypes.element.isRequired,
+  pending: PropTypes.bool,
+  error: PropTypes.bool,
 };
 
 Layout.defaultProps = {
   mainColor: '',
+  pending: false,
+  error: false,
 };
 
 export default Layout;

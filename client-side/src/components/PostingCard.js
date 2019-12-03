@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
-  Card,
-  makeStyles,
-  Typography,
-  CardContent,
+  Card, makeStyles, Typography, CardContent,
 } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import FavoriteButton from './FavoriteButton';
@@ -57,7 +54,10 @@ const PostingCard = ({ posting }) => {
             />
             <CardContent className={classes.details}>
               <Typography variant="h6" component="h3">
-                {`$ ${posting.price}`}
+                {`$ ${posting.price
+                  .toLocaleString()
+                  .split(',')
+                  .join(' ')}`}
               </Typography>
               <Typography
                 variant="body2"

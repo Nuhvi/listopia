@@ -19,7 +19,7 @@ const Postings = ({
   }, [category, setCategory, fetchPostings]);
 
   return (
-    <Layout title={category}>
+    <Layout title={category} pending={pending}>
       <CustomGrid columns="2">
         {postings.map((posting) => (
           <PostingCard
