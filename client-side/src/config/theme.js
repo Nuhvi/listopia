@@ -25,4 +25,5 @@ export default createMuiTheme({
       primary: '#4d5360',
     },
   },
+  spacing: (n) => `${n * 4}px`,
 });

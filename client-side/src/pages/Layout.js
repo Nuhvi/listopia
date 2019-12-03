@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   header: (props) => ({
     paddingTop: '3rem',
     backgroundColor: 'white',
-    borderBottom: `2px solid ${props.borderColor}`,
+    borderBottom: `3px solid ${props.borderColor}`,
   }),
   main: {
     flexGrow: '1',
@@ -37,12 +37,12 @@ const Layout = ({ title, children, mainColor }) => {
       ) : (
         ''
       )}
-      <Container
+      <div
         className={classes.main}
         style={{ backgroundColor: mainColor }}
       >
         {children}
-      </Container>
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Card } from '@material-ui/core';
 
+
 const Icon = styled.img`
   width: 100%;
   height: 100%;
@@ -16,9 +17,9 @@ const Icon = styled.img`
 const Category = ({ category, icon }) => (
   <Card>
     <Link to={`postings/category/${category}`}>
-      <Icon icon={icon} bacground="red" />
-      <p>{category}</p>
-    </Link>
+        <Icon icon={icon} bacground="red" />
+        <p>{category}</p>
+      </Link>
   </Card>
 );
 
