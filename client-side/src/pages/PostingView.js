@@ -39,7 +39,9 @@ const Posting = ({ postings, fetchPostings }) => {
         <span>Favorite: </span>
         {`${posting.favorited}`}
       </p>
-      <FavoriteButton postingId={posting.id} />
+      <div>
+        <FavoriteButton posting={posting} />
+      </div>
     </article>
   ) : (
     <PostingNotFound />

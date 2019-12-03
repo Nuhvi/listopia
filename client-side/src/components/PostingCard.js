@@ -5,6 +5,7 @@ import {
   Card, makeStyles, Typography, CardContent,
 } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
+import { red } from '@material-ui/core/colors';
 import FavoriteButton from './FavoriteButton';
 import PlaceHolderFeatureImage from '../images/placeholder-posting-feature-image.jpg';
 
@@ -32,13 +33,26 @@ const useStyles = makeStyles((theme) => ({
     height: '40%',
     paddingTop: theme.spacing(1),
   },
+  favoriteContainer: {
+    position: 'absolute',
+    top: '50%',
+    right: '10%',
+    height: '40px',
+    width: '20%',
+    backgroundColor: 'white',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: theme.shadows[1],
+  },
 }));
 
 const PostingCard = ({ posting }) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <Link
         to={(location) => ({
           ...location,
@@ -71,7 +85,9 @@ const PostingCard = ({ posting }) => {
           </div>
         </Card>
       </Link>
-      <FavoriteButton postingId={posting.id} />
+      <div className={classes.favoriteContainer}>
+        <FavoriteButton posting={posting} />
+      </div>
     </div>
   );
 };
