@@ -1,41 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { useTheme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: ${(props) => `repeat(${props.columns}, 1fr)`};
-  grid-gap: ${(props) => props.gap};
-  margin: ${(props) => props.gap};
-`;
+const useStyles = makeStyles((theme) => ({
+  grid: ({
+    display: 'grid',
+    gridGap: theme.spacing(1),
+    margin: theme.spacing(1),
+    gridTemplateColumns: '1fr 1fr',
+    [theme.breakpoints.up('md')]: {
+      gridTemplateColumns: '1fr 1fr 1fr',
+    },
+  }),
+}));
 
-const CustomGrid = ({
-  children, columns, gap, margin,
-}) => {
-  const theme = useTheme();
+const CustomGrid = ({ children }) => {
+  const classes = useStyles();
   return (
-    <Grid
-      columns={columns}
-      gap={gap || theme.spacing(1)}
-      margin={margin || theme.spacing(1)}
+    <section
+      className={classes.grid}
     >
       {children}
-    </Grid>
+    </section>
   );
 };
 
 CustomGrid.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
-  columns: PropTypes.string,
-  gap: PropTypes.string,
-  margin: PropTypes.string,
-};
-
-CustomGrid.defaultProps = {
-  columns: '1',
-  gap: '',
-  margin: '',
 };
 
 export default CustomGrid;

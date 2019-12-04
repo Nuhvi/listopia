@@ -13,7 +13,7 @@ const Favorites = ({ favorites, fetchFavorites }) => {
 
   return (
     <Layout title="Favorites">
-      <CustomGrid columns="2">
+      <CustomGrid>
         {favorites.map((posting) => (
           <PostingCard key={posting.id} posting={posting} />
         ))}

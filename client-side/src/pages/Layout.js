@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   header: {
+    width: '100%',
     paddingTop: '3rem',
     backgroundColor: 'white',
     borderBottom: `3px solid ${theme.palette.grey[100]}`,
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
   main: {
     flexGrow: '1',
     paddingTop: '1rem',
+  },
+  container: {
+    maxWidth: '1024px',
+    margin: 'auto',
   },
 }));
 
@@ -28,20 +33,24 @@ const Layout = ({
   return (
     <div className={classes.root}>
       {title ? (
-        <Container className={classes.header}>
-          <Typography variant="h4" color="textPrimary" gutterBottom>
-            {title}
-          </Typography>
-        </Container>
+        <header className={classes.header}>
+          <Container className={classes.container}>
+            <Typography variant="h4" color="textPrimary" gutterBottom>
+              {title}
+            </Typography>
+          </Container>
+        </header>
       ) : (
         ''
       )}
       {pending ? (<p>Loading...</p>) : ''}
       {error ? (<p>Something Went Wrong!</p>) : ''}
       {!pending && !error ? (
-        <div className={classes.main} style={{ backgroundColor: mainColor }}>
-          {children}
-        </div>
+        <main className={classes.main} style={{ backgroundColor: mainColor }}>
+          <div className={classes.container}>
+            {children}
+          </div>
+        </main>
       ) : ''}
 
     </div>

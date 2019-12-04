@@ -6,7 +6,7 @@ import CustomGrid from '../components/CustomGrid';
 
 export default () => (
   <Layout title="What property do you want to buy?" mainColor="white">
-    <CustomGrid columns="2">
+    <CustomGrid>
       {categories.map((category) => (
         <CategoryCard
           key={category.name}

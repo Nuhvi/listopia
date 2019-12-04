@@ -20,7 +20,7 @@ const Postings = ({
 
   return (
     <Layout title={category} pending={pending}>
-      <CustomGrid columns="2">
+      <CustomGrid>
         {postings.map((posting) => (
           <PostingCard
             key={posting.id}
