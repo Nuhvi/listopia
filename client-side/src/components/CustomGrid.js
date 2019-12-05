@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     gridGap: theme.spacing(1),
     margin: theme.spacing(1),
     gridTemplateColumns: '1fr 1fr',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       gridTemplateColumns: '1fr 1fr 1fr',
     },
   }),
