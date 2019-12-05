@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const Auth = ({ userData }) => (
   <div style={{ height: '100%' }}>
-    {userData || true ? <App /> : <SignIn />}
+    {userData ? <App /> : <SignIn />}
   </div>
 );
 

@@ -4,12 +4,13 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   grid: ({
+    width: '100%',
     display: 'grid',
     gridGap: theme.spacing(1),
     margin: theme.spacing(1),
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: 'repeat(2, calc(50% - 12px))',
     [theme.breakpoints.up('sm')]: {
-      gridTemplateColumns: '1fr 1fr 1fr',
+      gridTemplateColumns: 'repeat(3, calc(33% - 8px))',
     },
   }),
 }));

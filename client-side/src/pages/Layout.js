@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     maxWidth: '1024px',
+    width: '100vw',
     margin: 'auto',
   },
 }));

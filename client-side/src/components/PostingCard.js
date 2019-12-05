@@ -67,7 +67,6 @@ const PostingCard = ({ posting }) => {
             color="textSecondary"
             component="p"
             noWrap
-            style={{ maxWidth: '25vw' }}
           >
             {`${posting.title}`}
           </Typography>

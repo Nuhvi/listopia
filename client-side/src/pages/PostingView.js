@@ -20,10 +20,6 @@ const Posting = ({ postings, fetchPostings }) => {
   return posting ? (
     <article>
       <p>
-        <span>ID: </span>
-        {posting.id}
-      </p>
-      <p>
         <span>Price: </span>
         {posting.price}
       </p>
@@ -52,7 +48,6 @@ Posting.propTypes = {
   fetchPostings: PropTypes.func.isRequired,
   postings: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
       desc: PropTypes.string.isRequired,
       category: PropTypes.string.isRequired,
