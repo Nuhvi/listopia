@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     width: '100%',
     color: theme.palette.primary.main,
+    borderTop: `2px solid ${theme.palette.grey[100]}`,
   },
 }));
 
