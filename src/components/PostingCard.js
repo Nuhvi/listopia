@@ -67,10 +67,7 @@ const PostingCard = ({ posting }) => {
       </CardContent>
       <Link
         className={classes.link}
-        to={(location) => ({
-          ...location,
-          pathname: `/postings/${posting.id}`,
-        })}
+        to={`/postings/${posting.id}`}
       />
 
       <FavoriteButton
