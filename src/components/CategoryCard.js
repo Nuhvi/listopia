@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import {
   Card, makeStyles, Typography, useTheme,
 } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { setCategory } from '../actions';
 import SVG from './SVG';
 
 const useStyles = makeStyles({
@@ -24,12 +26,15 @@ const useStyles = makeStyles({
   },
 });
 
-const Category = ({ category, icon }) => {
+const Category = ({ category, icon, setCategory }) => {
   const theme = useTheme({});
   const classes = useStyles({});
 
   return (
-    <Link to={`postings/category/${category}`}>
+    <Link
+      to="/home"
+      onClick={() => setCategory(category)}
+    >
       <Card className={classes.card} component="section">
         <div className={classes.container}>
           <SVG
@@ -37,7 +42,6 @@ const Category = ({ category, icon }) => {
             icon={icon}
             className={classes.icon}
             color={theme.palette.primary.main}
-
           />
           <Typography align="center" variant="subtitle1" component="h2">
             {category}
@@ -49,8 +53,13 @@ const Category = ({ category, icon }) => {
 };
 
 Category.propTypes = {
+  setCategory: PropTypes.func.isRequired,
   category: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
 };
 
-export default Category;
+const mapDispatchToProps = (dispatch) => ({
+  setCategory: (category) => dispatch(setCategory(category)),
+});
+
+export default connect(null, mapDispatchToProps)(Category);

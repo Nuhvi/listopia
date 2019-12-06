@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Switch, Route, Redirect,
+} from 'react-router-dom';
 import PostingView from '../pages/PostingView';
 import NotFound from '../pages/404';
 import Favorites from '../pages/Favorites';
@@ -25,10 +27,14 @@ export default () => (
     <Router>
       <Switch>
         <Route path="/" exact>
+          <Redirect to="/categories" />
           <Categories />
         </Route>
-        <Route path="/postings/category/:category">
+        <Route path="/home">
           <Postings />
+        </Route>
+        <Route path="/categories">
+          <Categories />
         </Route>
         <Route path="/postings/:id/">
           <PostingView />

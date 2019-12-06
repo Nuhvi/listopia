@@ -1,4 +1,4 @@
-export const category = null;
+export const category = 'All';
 
 export const postings = {
   pending: false,

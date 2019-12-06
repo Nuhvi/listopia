@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Typography, makeStyles } from '@material-ui/core';
+import NavBar from '../components/NavBar';
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -18,11 +19,18 @@ const useStyles = makeStyles((theme) => ({
   main: {
     flexGrow: '1',
     paddingTop: '1rem',
+    paddingBottom: theme.spacing(7),
   },
   container: {
     maxWidth: '1024px',
     width: '100vw',
     margin: 'auto',
+  },
+  bottom_nav: {
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -36,7 +44,12 @@ const Layout = ({
       {title ? (
         <header className={classes.header}>
           <Container className={classes.container}>
-            <Typography variant="h4" component="h1" color="textPrimary" gutterBottom>
+            <Typography
+              variant="h4"
+              component="h1"
+              color="textPrimary"
+              gutterBottom
+            >
               {title}
             </Typography>
           </Container>
@@ -44,16 +57,17 @@ const Layout = ({
       ) : (
         ''
       )}
-      {pending ? (<p>Loading...</p>) : ''}
-      {error ? (<p>Something Went Wrong!</p>) : ''}
+      {pending ? <p>Loading...</p> : ''}
+      {error ? <p>Something Went Wrong!</p> : ''}
       {!pending && !error ? (
         <main className={classes.main} style={{ backgroundColor: mainColor }}>
-          <div className={classes.container}>
-            {children}
-          </div>
+          <div className={classes.container}>{children}</div>
         </main>
-      ) : ''}
+      ) : (
+        ''
+      )}
 
+      <NavBar className={classes.bottom_nav} pageTitle={title} />
     </div>
   );
 };
