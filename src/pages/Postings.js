@@ -22,12 +22,13 @@ const Postings = ({
     <Layout title={category} pending={pending}>
       <CustomGrid>
         {postings.map((posting) => (
-          <PostingCard
-            key={posting.id}
-            posting={posting}
-          >
-            {category}
-          </PostingCard>
+          <li key={posting.id}>
+            <PostingCard
+              posting={posting}
+            >
+              {category}
+            </PostingCard>
+          </li>
         ))}
       </CustomGrid>
     </Layout>

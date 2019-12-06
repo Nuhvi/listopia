@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Typography, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  layout: {
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -32,11 +32,11 @@ const Layout = ({
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.layout}>
       {title ? (
         <header className={classes.header}>
           <Container className={classes.container}>
-            <Typography variant="h4" color="textPrimary" gutterBottom>
+            <Typography variant="h4" component="h1" color="textPrimary" gutterBottom>
               {title}
             </Typography>
           </Container>

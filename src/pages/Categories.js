@@ -8,13 +8,14 @@ export default () => (
   <Layout title="What property do you want to buy?" mainColor="white">
     <CustomGrid>
       {categories.map((category) => (
-        <CategoryCard
-          key={category.name}
-          category={category.name}
-          icon={category.icon}
-        >
-          {category}
-        </CategoryCard>
+        <li key={category.name} id={category.name}>
+          <CategoryCard
+            category={category.name}
+            icon={category.icon}
+          >
+            {category}
+          </CategoryCard>
+        </li>
       ))}
     </CustomGrid>
   </Layout>

@@ -9,15 +9,14 @@ import FavoriteButton from './FavoriteButton';
 import PlaceHolderFeatureImage from '../images/placeholder-posting-feature-image.jpg';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    position: 'relative',
-  },
   card: {
+    position: 'relative',
     borderRadius: '8px',
     height: '180px',
   },
   media: {
     height: '60%',
+    margin: 0,
   },
   details: {
     paddingTop: theme.spacing(1),
@@ -48,30 +47,24 @@ const PostingCard = ({ posting }) => {
   const classes = useStyles();
 
   return (
-    <article className={classes.root}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={PlaceHolderFeatureImage}
-          title="posting feature image"
-        />
-        <CardContent className={classes.details}>
-          <Typography variant="h6" component="h3">
-            {`$ ${posting.price
-              .toLocaleString()
-              .split(',')
-              .join(' ')}`}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            noWrap
-          >
-            {`${posting.title}`}
-          </Typography>
-        </CardContent>
-      </Card>
+    <Card className={classes.card} component="article">
+      <CardMedia
+        component="figure"
+        className={classes.media}
+        image={PlaceHolderFeatureImage}
+        title="posting feature image"
+      />
+      <CardContent className={classes.details}>
+        <Typography variant="h6" component="h3">
+          {`$ ${posting.price
+            .toLocaleString()
+            .split(',')
+            .join(' ')}`}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p" noWrap>
+          {`${posting.title}`}
+        </Typography>
+      </CardContent>
       <Link
         className={classes.link}
         to={(location) => ({
@@ -85,7 +78,7 @@ const PostingCard = ({ posting }) => {
         posting={posting}
         className={classes.favoriteButton}
       />
-    </article>
+    </Card>
   );
 };
 

@@ -30,10 +30,10 @@ export default () => (
         <Route path="/postings/category/:category">
           <Postings />
         </Route>
-        <Route path="/postings/:id/" exact>
+        <Route path="/postings/:id/">
           <PostingView />
         </Route>
-        <Route path="/favorites">
+        <Route path="/favorites" exact>
           <Favorites />
         </Route>
         <Route path="*">

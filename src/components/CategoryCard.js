@@ -22,9 +22,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     padding: '1rem',
   },
-  icon: {
-    width: '60%',
-  },
 });
 
 const Category = ({ category, icon }) => {
@@ -33,10 +30,16 @@ const Category = ({ category, icon }) => {
 
   return (
     <Link to={`postings/category/${category}`}>
-      <Card className={classes.card}>
+      <Card className={classes.card} component="section">
         <div className={classes.container}>
-          <SVG className={classes.icon} icon={icon} color={theme.palette.primary.main} />
-          <Typography align="center" variant="subtitle1">
+          <SVG
+            size="60%"
+            icon={icon}
+            className={classes.icon}
+            color={theme.palette.primary.main}
+
+          />
+          <Typography align="center" variant="subtitle1" component="h2">
             {category}
           </Typography>
         </div>
