@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import logo from '../images/logo.svg';
-import Theme from '../config/theme';
 
 const WhiteCircle = styled.div`
   position: absolute;
@@ -40,7 +39,7 @@ const WhiteCircle = styled.div`
       opacity: 1;
     }
   }
-  animation: white-grow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+  animation: white-grow ${(props) => props.animationDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 `;
 
 const Icon = styled.img`
@@ -49,7 +48,7 @@ const Icon = styled.img`
   width: 50%;
   height: 50%;
 
-  background-color: ${Theme.colors.highlight.main};
+  background-color: ${(props) => props.bacground};
   mask: url(${logo}) no-repeat center;
   mask-size: contain;
 
@@ -67,7 +66,8 @@ const Icon = styled.img`
       opacity: 1;
     }
   }
-  animation: logo-grow ${(props) => props.animationDuration} cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+  animation: logo-grow ${(props) => props.animationDuration}
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 `;
 
 const Container = styled.div`
@@ -80,15 +80,16 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const BounceLogo = ({ size }) => (
+const BounceLogo = ({ size, color }) => (
   <Container size={size}>
-    <WhiteCircle />
-    <Icon animationDuration />
+    <WhiteCircle animationDuration="0.5s" />
+    <Icon animationDuration="0.5s" bacground={color} />
   </Container>
 );
 
 BounceLogo.propTypes = {
   size: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default BounceLogo;

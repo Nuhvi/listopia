@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostingCard from '../components/PostingCard';
 import { fetchFavorites } from '../actions';
+import Layout from './Layout';
+import CustomGrid from '../components/CustomGrid';
 
 const Favorites = ({ favorites, fetchFavorites }) => {
   useEffect(() => {
@@ -10,12 +12,13 @@ const Favorites = ({ favorites, fetchFavorites }) => {
   }, [fetchFavorites]);
 
   return (
-    <div>
-      <h1>Favorites</h1>
-      {favorites.map((posting) => (
-        <PostingCard key={posting.id} posting={posting} />
-      ))}
-    </div>
+    <Layout title="Favorites">
+      <CustomGrid>
+        {favorites.map((posting) => (
+          <PostingCard key={posting.id} posting={posting} />
+        ))}
+      </CustomGrid>
+    </Layout>
   );
 };
 
