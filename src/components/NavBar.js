@@ -6,6 +6,19 @@ import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
+const CustomBottomNavigationAction = ({
+  label, path, icon, location,
+}) => (
+  <BottomNavigationAction
+    label={label}
+    value={path}
+    icon={icon}
+    component={Link}
+    to={path}
+    disabled={location.pathname === path}
+  />
+);
+
 const NavBar = ({ className, location }) => (
   <BottomNavigation
     value={location.pathname}
@@ -19,6 +32,7 @@ const NavBar = ({ className, location }) => (
       icon={<HomeIcon />}
       component={Link}
       to="/home"
+      disabled={location.pathname === '/home'}
     />
     <BottomNavigationAction
       label="Favorites"
@@ -26,6 +40,7 @@ const NavBar = ({ className, location }) => (
       icon={<FavoriteBorderIcon />}
       component={Link}
       to="/favorites"
+      disabled={location.pathname === '/favorites'}
     />
     <BottomNavigationAction
       label="Categories"
@@ -33,9 +48,18 @@ const NavBar = ({ className, location }) => (
       icon={<FilterListIcon />}
       component={Link}
       to="/categories"
+      disabled={location.pathname === '/categories'}
     />
   </BottomNavigation>
 );
+
+CustomBottomNavigationAction.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  label: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+};
 
 NavBar.propTypes = {
   location: PropTypes.shape({
