@@ -21,7 +21,7 @@ const FavoriteButton = ({
     type="button"
     className={className}
     style={{ cursor: 'pointer' }}
-    onClick={() => toggleFavorite(posting.id)}
+    onClick={() => toggleFavorite(posting.id, posting.favorited)}
   >
     {posting.favorited ? (
       <AnimatedFavoriteIcon style={{ fontSize: size }} />
@@ -47,7 +47,7 @@ FavoriteButton.defaultProps = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleFavorite: (id) => toggleFavorite(dispatch, id),
+  toggleFavorite: (id, favorited) => toggleFavorite(dispatch, id, favorited),
 });
 
 export default connect(null, mapDispatchToProps)(FavoriteButton);
