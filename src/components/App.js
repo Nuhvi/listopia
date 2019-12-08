@@ -22,7 +22,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export default () => (
+const App = () => (
   <Container>
     <Router>
       <Switch>
@@ -49,3 +49,6 @@ export default () => (
     </Router>
   </Container>
 );
+
+
+export default App;

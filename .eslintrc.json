@@ -5,7 +5,8 @@
         "jest": true
     },
     "extends": [
-        "airbnb"
+        "airbnb",
+        "plugin:react/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -18,17 +19,11 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "react-hooks"
-    ],
+    "plugins": ["react"],
     "rules": {
-        "no-shadow": 0,
-        "no-param-reassign": 0,
-        "eol-last": 0,
+        "no-shadow": "off",
         "arrow-parens": [2, "always"],
         "import/extensions": [1, "ignorePackages"],
-        "import/no-extraneous-dependencies": [0],
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }]

@@ -4,15 +4,12 @@ import categories from '../config/categories';
 import Layout from './Layout';
 import CustomGrid from '../components/CustomGrid';
 
-export default () => (
+const Categories = () => (
   <Layout title="What property do you want to buy?" mainColor="white">
     <CustomGrid>
       {categories.map((category) => (
         <li key={category.name} id={category.name}>
-          <CategoryCard
-            category={category.name}
-            icon={category.icon}
-          >
+          <CategoryCard category={category.name} icon={category.icon}>
             {category}
           </CategoryCard>
         </li>
@@ -20,3 +17,5 @@ export default () => (
     </CustomGrid>
   </Layout>
 );
+
+export default Categories;
