@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
-  CardMedia,
   Card,
+  CardMedia,
   makeStyles,
   Typography,
   CardContent,
@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     position: 'relative',
     borderRadius: 0,
+    boxShadow: 'none',
+    background: 'none',
   },
   media: {
     height: '25vh',
@@ -32,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     top: '0',
+  },
+  desc: {
+    padding: theme.spacing(1, 0),
+    margin: theme.spacing(1, 0),
+    borderTop: `1px solid ${theme.palette.grey[300]}`,
+    borderBottom: `1px solid ${theme.palette.grey[300]}`,
   },
   favoriteButton: {
     position: 'absolute',
@@ -61,37 +69,44 @@ const PostingDetails = ({ postings, fetchPostings }) => {
 
   return posting ? (
     <Layout>
-      <CardMedia
-        component="figure"
-        className={classes.media}
-        image={PlaceHolderFeatureImage}
-        title="posting feature image"
-      />
-      <CardContent className={classes.details}>
-        <Typography variant="h6" component="h3">
-          {`$ ${posting.price
-            .toLocaleString()
-            .split(',')
-            .join(' ')}`}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-          component="p"
-          noWrap
-        >
-          {`${posting.title}`}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {`${posting.desc}`}
-        </Typography>
-      </CardContent>
+      <Card className={classes.card}>
+        <CardMedia
+          component="figure"
+          className={classes.media}
+          image={PlaceHolderFeatureImage}
+          title="posting feature image"
+        />
+        <CardContent className={classes.details} component="header">
+          <Typography variant="h6" component="h3">
+            {`$ ${posting.price
+              .toLocaleString()
+              .split(',')
+              .join(' ')}`}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="h1"
+            noWrap
+          >
+            {`${posting.title}`}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={classes.desc}
+          >
+            {`${posting.desc}`}
+          </Typography>
+        </CardContent>
 
-      <FavoriteButton
-        size="1.5rem"
-        posting={posting}
-        className={classes.favoriteButton}
-      />
+        <FavoriteButton
+          size="1.5rem"
+          posting={posting}
+          className={classes.favoriteButton}
+        />
+      </Card>
     </Layout>
   ) : (
     <PostingNotFound />

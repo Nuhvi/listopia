@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
-  Card, makeStyles, Typography, CardContent,
+  CardMedia,
+  Card,
+  makeStyles,
+  Typography,
+  CardContent,
 } from '@material-ui/core';
-import CardMedia from '@material-ui/core/CardMedia';
 import FavoriteButton from './FavoriteButton';
 import PlaceHolderFeatureImage from '../images/placeholder-posting-feature-image.jpg';
 
@@ -65,10 +68,7 @@ const PostingCard = ({ posting }) => {
           {`${posting.title}`}
         </Typography>
       </CardContent>
-      <Link
-        className={classes.link}
-        to={`/postings/${posting.id}`}
-      />
+      <Link className={classes.link} to={`/postings/${posting.id}`} />
 
       <FavoriteButton
         size="1.5rem"

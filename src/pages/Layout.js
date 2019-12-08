@@ -12,13 +12,13 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     width: '100%',
-    paddingTop: '3rem',
+    paddingTop: `${theme.spacing(4)}`,
+    marginBottom: `${theme.spacing(2)}`,
     backgroundColor: 'white',
     borderBottom: `3px solid ${theme.palette.grey[100]}`,
   },
   main: {
     flexGrow: '1',
-    paddingTop: '1rem',
     paddingBottom: theme.spacing(7),
   },
   container: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const Layout = ({
   title, children, mainColor, pending, error,
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ title });
 
   return (
     <div className={classes.layout}>
@@ -74,7 +74,7 @@ const Layout = ({
 };
 
 Layout.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   mainColor: PropTypes.string,
   children: PropTypes.element.isRequired,
   pending: PropTypes.bool,
@@ -82,6 +82,7 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
+  title: '',
   mainColor: '',
   pending: false,
   error: false,
