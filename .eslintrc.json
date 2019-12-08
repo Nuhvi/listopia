@@ -24,6 +24,7 @@
         "no-shadow": "off",
         "arrow-parens": [2, "always"],
         "import/extensions": [1, "ignorePackages"],
+        "import/no-extraneous-dependencies": [0],
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }]
