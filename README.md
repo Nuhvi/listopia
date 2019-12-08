@@ -20,7 +20,7 @@ The goal is building a real-world-like project, built with business specificatio
 
 Find the code for the server-side API can, and the relevant documentation can at [**Listopia-Rails-Api**](https://github.com/Nazeh/listopia-RailsApi)
 
-### ✨ [Demo](listopia.netlify.com)
+### ✨ [Demo](https://listopia.netlify.com/)
 
 ## 🔨 Tools
 
@@ -82,7 +82,7 @@ npm run test
 
 ### Customize
 
-Change files in the [**config**](.src/config/api.js) directory.
+Change files in the [**config**](./src/config/api.js) directory.
 
 ### Deploy
 
