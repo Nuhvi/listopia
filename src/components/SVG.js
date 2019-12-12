@@ -4,27 +4,33 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
   image: (props) => ({
-    width: '100%',
-    paddingTop: '100%',
+    padding: props.padding,
     backgroundColor: `${props.color}`,
     mask: `url(${props.icon}) no-repeat center`,
     maskSize: 'contain',
   }),
 });
 
-const SVG = ({ color, icon, className }) => {
-  const classes = useStyles({ color, icon });
-  return (
-    <div className={className}>
-      <img className={classes.image} alt="" />
-    </div>
-  );
+const SVG = ({
+  color, icon, className, size,
+}) => {
+  const [sizeValue, sizeUnit] = size.match(/(\d.+?)(\D.*)/).slice(1);
+  const padding = `${sizeValue / 2}${sizeUnit}`;
+
+  const classes = useStyles({
+    color,
+    icon,
+    padding,
+  });
+
+  return <img className={`${classes.image} ${className}`} alt="" />;
 };
 
 SVG.propTypes = {
   color: PropTypes.string,
-  icon: PropTypes.string.isRequired,
   className: PropTypes.string,
+  size: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 };
 
 SVG.defaultProps = {

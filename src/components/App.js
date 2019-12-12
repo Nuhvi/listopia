@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import PostingView from '../pages/PostingView';
+import {
+  BrowserRouter as Router, Switch, Route, Redirect,
+} from 'react-router-dom';
+import PostingDetails from '../pages/PostingDetails';
 import NotFound from '../pages/404';
 import Favorites from '../pages/Favorites';
 import Categories from '../pages/Categories';
@@ -20,20 +22,24 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export default () => (
+const App = () => (
   <Container>
     <Router>
       <Switch>
         <Route path="/" exact>
+          <Redirect to="/categories" />
           <Categories />
         </Route>
-        <Route path="/postings/category/:category">
+        <Route path="/home">
           <Postings />
         </Route>
-        <Route path="/postings/:id/" exact>
-          <PostingView />
+        <Route path="/categories">
+          <Categories />
         </Route>
-        <Route path="/favorites">
+        <Route path="/postings/:id/">
+          <PostingDetails />
+        </Route>
+        <Route path="/favorites" exact>
           <Favorites />
         </Route>
         <Route path="*">
@@ -43,3 +49,6 @@ export default () => (
     </Router>
   </Container>
 );
+
+
+export default App;

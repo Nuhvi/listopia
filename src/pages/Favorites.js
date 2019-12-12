@@ -15,7 +15,9 @@ const Favorites = ({ favorites, fetchFavorites }) => {
     <Layout title="Favorites">
       <CustomGrid>
         {favorites.map((posting) => (
-          <PostingCard key={posting.id} posting={posting} />
+          <li key={posting.id}>
+            <PostingCard posting={posting} />
+          </li>
         ))}
       </CustomGrid>
     </Layout>

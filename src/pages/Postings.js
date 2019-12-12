@@ -1,33 +1,26 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import PostingCard from '../components/PostingCard';
-import { setCategory, fetchPostings } from '../actions';
+import { fetchPostings } from '../actions';
 import filterPostingsByCategory from '../selectors';
 import Layout from './Layout';
 import CustomGrid from '../components/CustomGrid';
 
 const Postings = ({
-  postings, setCategory, pending, fetchPostings,
+  postings, pending, fetchPostings, category,
 }) => {
-  const { category } = useParams();
-
   useEffect(() => {
-    setCategory(category);
     fetchPostings();
-  }, [category, setCategory, fetchPostings]);
+  }, [fetchPostings]);
 
   return (
-    <Layout title={category} pending={pending}>
+    <Layout title="Home" pending={pending}>
       <CustomGrid>
         {postings.map((posting) => (
-          <PostingCard
-            key={posting.id}
-            posting={posting}
-          >
-            {category}
-          </PostingCard>
+          <li key={posting.id}>
+            <PostingCard posting={posting}>{category}</PostingCard>
+          </li>
         ))}
       </CustomGrid>
     </Layout>
@@ -35,8 +28,8 @@ const Postings = ({
 };
 
 Postings.propTypes = {
+  category: PropTypes.string.isRequired,
   fetchPostings: PropTypes.func.isRequired,
-  setCategory: PropTypes.func.isRequired,
   pending: PropTypes.bool.isRequired,
   postings: PropTypes.arrayOf(
     PropTypes.shape({
@@ -48,10 +41,10 @@ Postings.propTypes = {
 const mapStateToProps = (state) => ({
   postings: filterPostingsByCategory(state),
   pending: state.postings.pending,
+  category: state.category,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCategory: (category) => dispatch(setCategory(category)),
   fetchPostings: () => fetchPostings(dispatch),
 });
 

@@ -4,7 +4,9 @@ import logger from 'redux-logger';
 import rootReducer from '../reducers';
 import initialState from './initial-states';
 
-const middlewares = [logger, thunk];
+const middlewares = process.env.NODE_ENV === 'development'
+  ? ([thunk, logger])
+  : ([thunk]);
 
 export default createStore(
   rootReducer,

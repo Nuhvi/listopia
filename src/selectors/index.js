@@ -7,8 +7,8 @@ export default createSelector(
   getGategory,
   getPostings,
   (category, postings) => (
-    category
-      ? postings.filter((posting) => posting.category === category)
-      : postings
+    category === 'All'
+      ? postings
+      : postings.filter((posting) => posting.category === category)
   ),
 );

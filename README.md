@@ -1,68 +1,119 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">Welcome to Listopia 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/Nazeh/listopia/blob/develop/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/nazeh/listopia" />
+  </a>
+    <a href="https://github.com/nazeh/listopia#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://twitter.com/ArNazeh" target="_blank">
+    <img alt="Twitter: ArNazeh" src="https://img.shields.io/twitter/follow/ArNazeh.svg?style=social" />
+  </a>
+</p>
 
-## Available Scripts
+> Listopia is an exercise in building a RESTful web app using React-Redux, and Rails API.
 
-In the project directory, you can run:
+![Listopia Screenshot](docs/ListopiaScreenshot.jpg)
 
-### `yarn start`
+The goal is building a real-world-like project, built with business specifications. In which I had to build an MVP before a given deadline.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Find the code for the server-side API can, and the relevant documentation can at [**Listopia-Rails-Api**](https://github.com/Nazeh/listopia-RailsApi)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### ✨ [Demo](https://listopia.netlify.com/)
 
-### `yarn test`
+## 🔨 Tools
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Create-React-App
+- React / React-Dom / React-Router-Dom
+- Redux / React-Redux / Redux-thunk / Reselect
+- Material UI
+- Axios
+- Styled Components
 
-### `yarn build`
+## 🎉 Features
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Mobile web app.
+- Responsive layout.
+- Shared state  managment.
+- Structured, Semantic HTML.
+- CRUD operations.
+- Asynchronous data fetching.
+- Front-end routing.
+- Material Design.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 🚧 Future development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Proper Authentication/Authorization.
+- Normalize Redux store.
+- Optimize data fetching.
+- Use Helmet for SOE.
+- Build create/update postings form.
+- Add support for storing/fetching images.
 
-### `yarn eject`
+## 🚀 Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> This guide shows how to clone, install, start and develop the client-side in your local environment. But, it will fetch data from my remote deployed server. For running your own local server, clone the server-side repository: at [Listopia-Rails-Api](https://github.com/Nazeh/listopia-RailsApi).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Clone
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+git clone git@github.com:Nazeh/listopia.git
+cd listopia
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Install
 
-## Learn More
+```sh
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+npm run start
+```
 
-### Code Splitting
+### Run tests
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```sh
+npm run test
+```
 
-### Analyzing the Bundle Size
+### Customize
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Change files in the [**config**](./src/config/api.js) directory.
 
-### Making a Progressive Web App
+### Deploy
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```sh
+npm install netlify-cli -g
+netlify login
+netlify deploy --prod
+```
 
-### Advanced Configuration
+## Author
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+👤 **Ar Nazeh**
 
-### Deployment
+* Twitter: [@ArNazeh](https://twitter.com/ArNazeh)
+* Github: [@Nazeh](https://github.com/Nazeh)
+* LinkedIn: [@arnazeh](https://linkedin.com/in/arnazeh)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Credits
 
-### `yarn build` fails to minify
+Design credits goes to the creators of [**Real Estate Classified App**]( https://www.behance.net/gallery/73279743/Real-Estate-Classified-App ) concept on Behance.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+***
+
+## 📝 License
+
+This project is [MIT](https://github.com/Nazeh/listopia/blob/develop/LICENSE) licensed.
